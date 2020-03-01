@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="50" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="68">
+ <tileset firstgid="1" name="platform-tileset" tilewidth="32" tileheight="32" tilecount="18" columns="6">
+  <image source="platform-tileset.png" width="192" height="96"/>
+ </tileset>
+ <tileset firstgid="19" name="object-tileset" tilewidth="32" tileheight="32" tilecount="7" columns="7">
+  <image source="object-tileset.png" width="224" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="name" value="Coin"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="name" value="Flag"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="name" value="Timer"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="name" value="Springboard"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="name" value="Platform"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="color" value="red"/>
+    <property name="name" value="Key"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="color" value="red"/>
+    <property name="name" value="Lock"/>
+   </properties>
+  </tile>
+ </tileset>
+ <imagelayer id="2" name="Image Layer 1">
+  <image source="background.png" width="1600" height="640"/>
+ </imagelayer>
+ <layer id="1" name="Tile Layer 1" width="50" height="20">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,8,8,8,0,0,0,0,0,0,17,18,0,0,0,0,17,18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,8,0,0,0,0,0,0,17,18,0,0,0,0,0,0,0,0,0,0,0,0,17,18,0,0,0,0,0,0,0,0,0,0,0,0,0,17,18,0,0,0,0,0,0,0,0,0,
+0,8,8,8,17,18,0,0,0,0,17,18,0,0,0,0,0,17,18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,8,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,14,0,15,14,0,0,0,14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,7,4,2,2,2,2,2,2,2,2,2,2,2,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,0,13,15,15,14,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,2,2,2,2,2,2,2,2,2,2,2,2,2,2,5,
+0,14,13,0,14,0,14,0,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,2,2,5,0,6,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+1,2,2,2,2,2,2,2,2,2,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="3" name="Object Layer 1">
+  <object id="1" x="0" y="608" width="352" height="32">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="2" x="256" y="576" width="96" height="32">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="3" x="288" y="544" width="64" height="32">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="4" x="320" y="512" width="64" height="32">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="5" x="352" y="480" width="448" height="32">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="10" x="1088" y="544" width="512" height="32">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="11" x="800" y="576" width="128" height="32">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="12" x="960" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="13" x="1024" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="14" x="32" y="480" width="32" height="32">
+   <properties>
+    <property name="name" value="start"/>
+   </properties>
+  </object>
+  <object id="15" gid="22" x="736" y="480" width="32" height="32"/>
+  <object id="18" gid="23" x="896" y="416" width="32" height="32"/>
+  <object id="19" gid="23" x="928" y="416" width="32" height="32"/>
+  <object id="20" gid="23" x="960" y="416" width="32" height="32"/>
+  <object id="21" gid="23" x="992" y="416" width="32" height="32"/>
+  <object id="22" gid="23" x="1024" y="416" width="32" height="32"/>
+  <object id="23" gid="23" x="1088" y="352" width="32" height="32"/>
+  <object id="24" gid="23" x="1120" y="352" width="32" height="32"/>
+  <object id="25" gid="23" x="1152" y="352" width="32" height="32"/>
+  <object id="26" gid="23" x="1184" y="352" width="32" height="32"/>
+  <object id="27" gid="23" x="1216" y="352" width="32" height="32"/>
+  <object id="28" gid="23" x="1280" y="288" width="32" height="32"/>
+  <object id="29" gid="23" x="1312" y="288" width="32" height="32"/>
+  <object id="30" gid="23" x="1344" y="288" width="32" height="32"/>
+  <object id="31" gid="23" x="1376" y="288" width="32" height="32"/>
+  <object id="32" gid="23" x="1408" y="288" width="32" height="32"/>
+  <object id="33" gid="23" x="1440" y="288" width="32" height="32"/>
+  <object id="34" gid="19" x="768" y="384" width="32" height="32"/>
+  <object id="35" gid="19" x="768" y="352" width="32" height="32"/>
+  <object id="36" gid="19" x="768" y="320" width="32" height="32"/>
+  <object id="37" gid="19" x="960" y="352" width="32" height="32"/>
+  <object id="38" gid="19" x="1152" y="288" width="32" height="32"/>
+  <object id="39" gid="19" x="1312" y="224" width="32" height="32"/>
+  <object id="40" gid="19" x="1344" y="224" width="32" height="32"/>
+  <object id="41" gid="19" x="1376" y="224" width="32" height="32"/>
+  <object id="42" gid="24" x="1408" y="224" width="32" height="32"/>
+  <object id="43" gid="20" x="1472" y="544" width="32" height="32"/>
+  <object id="44" gid="25" x="1408" y="544" width="32" height="32"/>
+  <object id="45" gid="25" x="1408" y="512" width="32" height="32"/>
+  <object id="46" gid="25" x="1408" y="480" width="32" height="32"/>
+  <object id="47" gid="25" x="1472" y="480" width="32" height="32"/>
+  <object id="48" gid="25" x="1440" y="480" width="32" height="32"/>
+  <object id="49" gid="25" x="1504" y="480" width="32" height="32"/>
+  <object id="50" gid="25" x="1536" y="480" width="32" height="32"/>
+  <object id="51" gid="25" x="1536" y="512" width="32" height="32"/>
+  <object id="52" gid="25" x="1536" y="544" width="32" height="32"/>
+  <object id="53" gid="21" x="960" y="320" width="32" height="32"/>
+  <object id="54" gid="21" x="1152" y="256" width="32" height="32"/>
+  <object id="55" gid="21" x="960" y="576" width="32" height="32"/>
+  <object id="56" gid="21" x="896" y="576" width="32" height="32"/>
+  <object id="57" gid="21" x="1024" y="576" width="32" height="32"/>
+  <object id="58" gid="19" x="896" y="544" width="32" height="32"/>
+  <object id="59" gid="19" x="1024" y="544" width="32" height="32"/>
+  <object id="60" gid="19" x="64" y="576" width="32" height="32"/>
+  <object id="61" gid="19" x="96" y="576" width="32" height="32"/>
+  <object id="62" gid="19" x="128" y="576" width="32" height="32"/>
+  <object id="63" gid="19" x="416" y="416" width="32" height="32"/>
+  <object id="64" gid="19" x="448" y="416" width="32" height="32"/>
+  <object id="65" gid="19" x="480" y="416" width="32" height="32"/>
+  <object id="66" gid="22" x="800" y="576" width="32" height="32"/>
+  <object id="67" x="352" y="608" width="1248" height="32">
+   <properties>
+    <property name="name" value="Void"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
