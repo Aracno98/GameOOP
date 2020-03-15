@@ -4,8 +4,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
-public class Timer extends BaseActor {
-	public Timer(float x, float y, Stage s) {
+public class Timer2 extends BaseActor {
+	public Timer2(float x, float y, Stage s) {
 		super(x,y,s);
 		loadTexture("JumpingJack/items/timer.png");
 

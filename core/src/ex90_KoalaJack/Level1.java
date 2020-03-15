@@ -18,80 +18,88 @@ public class Level1 extends LevelScreen {
 	public void initialize() {
 		TilemapActor tma = new TilemapActor("Levels/map01.tmx", mainStage);
 
-		for (MapObject obj : tma.getRectangleList("Solid") ) {
+		for (MapObject obj : tma.getRectangleList("Solid")) {
 			MapProperties props = obj.getProperties();
-			new Solid( (float)props.get("x"), (float)props.get("y"),
-					(float)props.get("width"), (float)props.get("height"), 
-					mainStage );
+			new Solid((float) props.get("x"), (float) props.get("y"), (float) props.get("width"),
+					(float) props.get("height"), mainStage);
 		}
 
-		for (MapObject obj : tma.getRectangleList("Void") ) {
+		for (MapObject obj : tma.getRectangleList("Void")) {
 			MapProperties props = obj.getProperties();
-			new VoidFall( (float)props.get("x"), (float)props.get("y"),
-					(float)props.get("width"), (float)props.get("height"), 
-					mainStage );
+			new VoidFall((float) props.get("x"), (float) props.get("y"), (float) props.get("width"),
+					(float) props.get("height"), mainStage);
 		}
 
 		MapObject startPoint = tma.getRectangleList("start").get(0);
 		MapProperties startProps = startPoint.getProperties();
-		jack = new Koala( (float)startProps.get("x"), (float)startProps.get("y"), mainStage);
+		jack = new Koala((float) startProps.get("x"), (float) startProps.get("y"), mainStage);
 
-		for (MapObject obj : tma.getTileList("Flag") ) {
+		for (MapObject obj : tma.getTileList("Flag")) {
 			MapProperties props = obj.getProperties();
-			new Flag( (float)props.get("x"), (float)props.get("y"), mainStage );
+			new Flag((float) props.get("x"), (float) props.get("y"), mainStage);
 		}
 
-		for (MapObject obj : tma.getTileList("Coin") ) {
+		for (MapObject obj : tma.getTileList("Coin")) {
 			MapProperties props = obj.getProperties();
-			new Coin( (float)props.get("x"), (float)props.get("y"), mainStage );
+			new Coin((float) props.get("x"), (float) props.get("y"), mainStage);
 		}
 
-		for (MapObject obj : tma.getTileList("Timer") ) {
+		for (MapObject obj : tma.getTileList("Timer")) {
 			MapProperties props = obj.getProperties();
-			new Timer( (float)props.get("x"), (float)props.get("y"), mainStage );
+			new Timer2((float) props.get("x"), (float) props.get("y"), mainStage);
 		}
 
-		for (MapObject obj : tma.getTileList("Springboard") ) {
+		for (MapObject obj : tma.getTileList("Springboard")) {
 			MapProperties props = obj.getProperties();
-			new Springboard( (float)props.get("x"), (float)props.get("y"), mainStage );
+			new Springboard((float) props.get("x"), (float) props.get("y"), mainStage);
 		}
 
-		for (MapObject obj : tma.getTileList("Platform") ) {
+		for (MapObject obj : tma.getTileList("Platform")) {
 			MapProperties props = obj.getProperties();
-			new Platform( (float)props.get("x"), (float)props.get("y"), mainStage );
+			new Platform((float) props.get("x"), (float) props.get("y"), mainStage);
 		}
 
-		for (MapObject obj : tma.getTileList("Key") ) {
+		for (MapObject obj : tma.getTileList("Key")) {
 			MapProperties props = obj.getProperties();
-			Key key = new Key( (float)props.get("x"), (float)props.get("y"), mainStage );
-			String color = (String)props.get("color");
-			if ( color.equals("red") )
+			Key key = new Key((float) props.get("x"), (float) props.get("y"), mainStage);
+			String color = (String) props.get("color");
+			if (color.equals("red"))
 				key.setColor(Color.RED);
-			else if ( color.equals("blue") )
+			else if (color.equals("blue"))
 				key.setColor(Color.BLUE);
-			else if ( color.equals("yellow") )
+			else if (color.equals("yellow"))
 				key.setColor(Color.YELLOW);
 			else // default color
 				key.setColor(Color.WHITE);
 		}
 
-		for (MapObject obj : tma.getTileList("Lock") ) {
+		for (MapObject obj : tma.getTileList("Lock")) {
 			MapProperties props = obj.getProperties();
-			Lock lock = new Lock( (float)props.get("x"), (float)props.get("y"), mainStage );
-			String color = (String)props.get("color");
-			if ( color.equals("red") )
+			Lock lock = new Lock((float) props.get("x"), (float) props.get("y"), mainStage);
+			String color = (String) props.get("color");
+			if (color.equals("red"))
 				lock.setColor(Color.RED);
-			else if ( color.equals("blue") )
+			else if (color.equals("blue"))
 				lock.setColor(Color.BLUE);
-			else if ( color.equals("yellow") )
+			else if (color.equals("yellow"))
 				lock.setColor(Color.YELLOW);
 			else // default
 				lock.setColor(Color.WHITE);
 		}
 
-		for (MapObject obj : tma.getRectangleList("Wizard") ) {
+		for (MapObject obj : tma.getRectangleList("Wizard")) {
 			MapProperties props = obj.getProperties();
-			new Wizard ( (float)props.get("x"), (float)props.get("y"), mainStage );
+			new Wizard((float) props.get("x"), (float) props.get("y"), mainStage);
+		}
+
+		for (MapObject obj : tma.getRectangleList("Zombie")) {
+			MapProperties zomProps = obj.getProperties();
+			new Zombie((float) zomProps.get("x"), (float) zomProps.get("y"), mainStage);
+		}
+		
+		for (MapObject obj : tma.getRectangleList("Enemy")) {
+			MapProperties zomProps = obj.getProperties();
+			new Enemy((float) zomProps.get("x"), (float) zomProps.get("y"), mainStage);
 		}
 
 		jack.toFront();
@@ -103,15 +111,17 @@ public class Level1 extends LevelScreen {
 		coinLabel = new Label("Coins: " + coins, BaseGame.labelStyle);
 		coinLabel.setColor(Color.GOLD);
 		keyTable = new Table();
-		timeLabel = new Label("Time: " + (int)time, BaseGame.labelStyle);
+		timeLabel = new Label("Time: " + (int) time, BaseGame.labelStyle);
 		timeLabel.setColor(Color.LIGHT_GRAY);
 		messageLabel = new Label("Message", BaseGame.labelStyle);
-		messageLabel.setVisible(false);        
+		messageLabel.setVisible(false);
+		lifeLabel = new Label("Life: " + (int) jack.life, BaseGame.labelStyle);
 
 		uiTable.pad(20);
 		uiTable.add(coinLabel);
 		uiTable.add(keyTable).expandX();
 		uiTable.add(timeLabel);
+		uiTable.add(lifeLabel);
 		uiTable.row();
 		uiTable.add(messageLabel).colspan(3).expandY();
 
@@ -123,41 +133,33 @@ public class Level1 extends LevelScreen {
 		instrumental.setLooping(true);
 		instrumental.setVolume(audioVolume);
 		instrumental.play();
+
+		count = 0;
 	}
-	
+
+	public void update(float dt) {
+		super.update(dt);
+
+	}
+
 	public boolean keyDown(int keyCode) {
 		super.keyDown(keyCode);
-		
+
 		if (gameOver) {
 			if (keyCode == Keys.C) {
 				this.instrumental.dispose();
-				JumpingJackGame.setActiveScreen( new Level2() );
+				JumpingJackGame.setActiveScreen(new Level2());
 			}
 
 			return false;
 		}
 
-		//mute and unmute the audio
+		// mute and unmute the audio
 		if (keyCode == Keys.S) {
 			audioVolume = 1 - audioVolume;
 			instrumental.setVolume(audioVolume);
 		}
 
-		if (keyCode == Keys.SPACE) {
-			// if down arrow is held while jump is pressed and koala is above a platform, 
-			//   then the koala can fall down through it.
-			if ( Gdx.input.isKeyPressed(Keys.DOWN) ) {
-				for (BaseActor actor : BaseActor.getList(mainStage, Platform.class.getName())) {
-					Platform platform = (Platform)actor;
-					if ( jack.belowOverlaps(platform) ) {
-						platform.setEnabled(false);
-					}
-				}
-			}
-			else if ( jack.isOnSolid() ) {
-				jack.jump();
-			}
-		}
 		return false;
 	}
 }
