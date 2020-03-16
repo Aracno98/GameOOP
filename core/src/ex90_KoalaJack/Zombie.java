@@ -10,9 +10,7 @@ public class Zombie extends BaseActor {
 	private Animation dead;
 
 	protected boolean move;
-
-	private float tot;
-	private float speed;
+	protected float speed;
 	private int direction;
 	protected float life;
 
@@ -30,9 +28,8 @@ public class Zombie extends BaseActor {
 				"zombie/Attack (8).png" };
 		attack = loadAnimationFromFiles(attackFileNames, 0.095f, true);
 
-		tot = 0;
 		speed = 3f;
-		direction = -1;
+		direction = 1;
 		move = true;
 		life = 50;
 
@@ -43,13 +40,6 @@ public class Zombie extends BaseActor {
 
 		if (move) {
 			moveBy(speed, 0);
-			tot++;
-			if (tot >= 100) {
-				tot = 0;
-				speed = -speed;
-				setScaleX(direction);
-				direction = -direction;
-			}
 		}
 
 	}
@@ -62,6 +52,12 @@ public class Zombie extends BaseActor {
 	public void walk() {
 		setAnimation(walk);
 		move = true;
+	}
+
+	public void setMove() {
+		speed = -speed;
+		direction = -direction;
+		setScaleX(direction);
 	}
 
 }

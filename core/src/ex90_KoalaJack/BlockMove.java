@@ -2,8 +2,8 @@ package ex90_KoalaJack;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class VoidFall extends BaseActor {
-	public VoidFall(float x, float y, float width, float height, Stage s) {
+public class BlockMove extends BaseActor {
+	public BlockMove(float x, float y, float width, float height, Stage s) {
 		super(x, y, s);
 		setSize(width, height);
 		setBoundaryRectangle();

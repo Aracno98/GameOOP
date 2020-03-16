@@ -30,6 +30,12 @@ public class Level1 extends LevelScreen {
 					(float) props.get("height"), mainStage);
 		}
 
+		for (MapObject obj : tma.getRectangleList("BlockMove")) {
+			MapProperties props = obj.getProperties();
+			new BlockMove((float) props.get("x"), (float) props.get("y"), (float) props.get("width"),
+					(float) props.get("height"), mainStage);
+		}
+
 		MapObject startPoint = tma.getRectangleList("start").get(0);
 		MapProperties startProps = startPoint.getProperties();
 		jack = new Koala((float) startProps.get("x"), (float) startProps.get("y"), mainStage);
@@ -96,10 +102,12 @@ public class Level1 extends LevelScreen {
 			MapProperties zomProps = obj.getProperties();
 			new Zombie((float) zomProps.get("x"), (float) zomProps.get("y"), mainStage);
 		}
-		
+
 		for (MapObject obj : tma.getRectangleList("Enemy")) {
-			MapProperties zomProps = obj.getProperties();
-			new Enemy((float) zomProps.get("x"), (float) zomProps.get("y"), mainStage);
+			MapProperties enProps = obj.getProperties();
+			Enemy e = new Enemy((float) enProps.get("x"), (float) enProps.get("y"), mainStage);
+			float scale = Float.parseFloat((String) enProps.get("scale"));
+			e.setScaleX(scale);
 		}
 
 		jack.toFront();

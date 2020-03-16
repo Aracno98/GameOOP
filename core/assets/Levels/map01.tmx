@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="194" height="32" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="202">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="194" height="32" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="255">
  <tileset firstgid="1" name="platform-tileset" tilewidth="32" tileheight="32" tilecount="18" columns="6">
   <image source="../Tiles/platform-tileset.png" width="192" height="96"/>
  </tileset>
@@ -79,7 +79,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,61,35,35,35,35,61,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,35,35,35,35,35,61,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,2,2,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,8,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,8,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,35,35,35,35,35,61,
-0,0,0,0,14,0,15,0,0,0,0,7,0,0,14,15,0,0,0,7,7,7,0,0,14,14,0,0,15,0,0,0,0,0,13,0,0,0,0,0,7,0,0,0,0,15,15,0,0,0,0,16,0,0,0,7,0,0,0,13,0,0,15,0,0,0,0,0,7,7,7,7,7,7,0,0,13,0,0,0,13,0,0,0,16,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,13,0,0,7,7,7,0,0,0,15,16,0,0,0,0,0,15,0,8,8,8,8,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,8,8,8,0,15,0,0,7,0,15,16,0,0,0,7,0,0,0,0,0,35,35,35,35,35,61,
+0,0,0,0,14,0,15,0,0,0,0,0,0,0,14,15,0,0,0,7,7,7,0,0,14,14,0,0,15,0,0,0,0,0,13,0,0,0,0,0,7,0,0,0,0,15,15,0,0,0,0,16,0,0,0,7,0,0,0,13,0,0,15,0,0,0,0,0,7,7,7,7,7,7,0,0,13,0,0,0,13,0,0,0,16,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,13,0,0,7,7,7,0,0,0,15,16,0,0,0,0,0,15,0,8,8,8,8,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,8,8,8,0,15,0,0,7,0,15,16,0,0,0,7,0,0,0,0,0,35,35,35,35,35,61,
 0,0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,0,0,0,0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,0,0,0,0,0,0,0,0,0,0,0,4,2,5,0,0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
 0,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,0,0,0,0,0,0,0,4,5,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,
 0,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9
@@ -129,11 +129,6 @@
    </properties>
   </object>
   <object id="13" x="608" y="864" width="96" height="64">
-   <properties>
-    <property name="name" value="Solid"/>
-   </properties>
-  </object>
-  <object id="14" x="352" y="896" width="32" height="32">
    <properties>
     <property name="name" value="Solid"/>
    </properties>
@@ -467,24 +462,14 @@
   <object id="186" gid="23" x="3360" y="608" width="32" height="32"/>
   <object id="187" gid="23" x="3296" y="704" width="32" height="32"/>
   <object id="188" gid="23" x="3328" y="704" width="32" height="32"/>
-  <object id="189" x="704" y="317.333" width="32" height="32">
+  <object id="189" x="768.25" y="319.333" width="32" height="32">
    <properties>
     <property name="name" value="Zombie"/>
    </properties>
   </object>
-  <object id="190" x="1854.67" y="893.333" width="32" height="32">
+  <object id="191" x="1888" y="894" width="32" height="32">
    <properties>
     <property name="name" value="Zombie"/>
-   </properties>
-  </object>
-  <object id="191" x="1376" y="894.667" width="32" height="32">
-   <properties>
-    <property name="name" value="Zombie"/>
-   </properties>
-  </object>
-  <object id="192" x="2496" y="384" width="32" height="32">
-   <properties>
-    <property name="name" value="Wizard"/>
    </properties>
   </object>
   <object id="193" x="1597.33" y="382.667" width="32" height="32">
@@ -492,19 +477,89 @@
     <property name="name" value="Zombie"/>
    </properties>
   </object>
-  <object id="194" x="2720" y="768" width="32" height="32">
-   <properties>
-    <property name="name" value="Wizard"/>
-   </properties>
-  </object>
   <object id="195" x="5600" y="704" width="32" height="32">
    <properties>
     <property name="name" value="Wizard"/>
    </properties>
   </object>
-  <object id="201" x="735.5" y="895.5" width="32" height="32">
+  <object id="201" x="1215.17" y="894.5" width="32" height="32">
    <properties>
     <property name="name" value="Enemy"/>
+    <property name="scale" value="-1"/>
+   </properties>
+  </object>
+  <object id="202" x="682.25" y="319.167" width="32" height="32">
+   <properties>
+    <property name="name" value="Enemy"/>
+    <property name="scale" value="1"/>
+   </properties>
+  </object>
+  <object id="238" x="712.209" y="895.792" width="32" height="32">
+   <properties>
+    <property name="name" value="Enemy"/>
+    <property name="scale" value="1"/>
+   </properties>
+  </object>
+  <object id="239" x="1454.67" y="380" width="32" height="32">
+   <properties>
+    <property name="name" value="Enemy"/>
+    <property name="scale" value="1"/>
+   </properties>
+  </object>
+  <object id="240" x="2720" y="477.333" width="32" height="32">
+   <properties>
+    <property name="name" value="Enemy"/>
+    <property name="scale" value="-1"/>
+   </properties>
+  </object>
+  <object id="245" x="590.584" y="877.542" width="11.3333" height="50">
+   <properties>
+    <property name="name" value="BlockMove"/>
+   </properties>
+  </object>
+  <object id="246" x="320.5" y="895" width="32" height="32">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="247" x="159.667" y="877.667" width="11.3333" height="50">
+   <properties>
+    <property name="name" value="BlockMove"/>
+   </properties>
+  </object>
+  <object id="248" x="981" y="301.333" width="11.3333" height="50">
+   <properties>
+    <property name="name" value="BlockMove"/>
+   </properties>
+  </object>
+  <object id="249" x="723.333" y="302" width="11.3333" height="50">
+   <properties>
+    <property name="name" value="BlockMove"/>
+   </properties>
+  </object>
+  <object id="250" x="1793.67" y="877.667" width="11.3333" height="50">
+   <properties>
+    <property name="name" value="BlockMove"/>
+   </properties>
+  </object>
+  <object id="251" x="2170.33" y="876.333" width="11.3333" height="50">
+   <properties>
+    <property name="name" value="BlockMove"/>
+   </properties>
+  </object>
+  <object id="252" x="1415" y="894.667" width="32" height="32">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="253" x="1304.67" y="877.667" width="11.3333" height="50">
+   <properties>
+    <property name="name" value="BlockMove"/>
+   </properties>
+  </object>
+  <object id="254" x="1754.66" y="877" width="11.3333" height="50">
+   <properties>
+    <property name="name" value="BlockMove"/>
    </properties>
   </object>
  </objectgroup>

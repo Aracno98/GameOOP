@@ -131,6 +131,7 @@ public class Level2 extends LevelScreen {
 
 		count = 0;
 	}
+
 	public void update(float dt) {
 		super.update(dt);
 

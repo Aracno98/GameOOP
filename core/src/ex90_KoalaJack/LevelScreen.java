@@ -42,6 +42,7 @@ public abstract class LevelScreen extends BaseScreen {
 				messageLabel.setColor(Color.RED);
 				messageLabel.setVisible(true);
 				jack.remove();
+				resetCharacterAnimation();
 				gameOver = true;
 			}
 		}
@@ -143,17 +144,23 @@ public abstract class LevelScreen extends BaseScreen {
 			}
 		}
 
-
 		for (BaseActor actor : BaseActor.getList(mainStage, Enemy.class.getName())) {
 			enemy = (Enemy) actor;
 			enemyAttack();
+			contactDamage(enemy);
 
 		}
 
 		for (BaseActor actor : BaseActor.getList(mainStage, Zombie.class.getName())) {
 			zombie = (Zombie) actor;
 			zombieAttack();
-			zombieDamage(zombie);
+			contactDamage(zombie);
+			for (BaseActor block : BaseActor.getList(mainStage, BlockMove.class.getName())) {
+				if (zombie.overlaps(block)) {
+					zombie.setMove();
+				}
+
+			}
 		}
 
 		// laser hit enemy
@@ -219,7 +226,7 @@ public abstract class LevelScreen extends BaseScreen {
 		 * messageLabel.setColor(Color.RED); messageLabel.setVisible(true);
 		 * jack.remove(); gameOver = true; } } }
 		 */
-		//CONTROL JACK LIFE
+		// CONTROL JACK LIFE
 		controlLife();
 	}
 
@@ -254,12 +261,28 @@ public abstract class LevelScreen extends BaseScreen {
 		float diffx = enemy.getX() - jack.getX();
 		float diffy = enemy.getY() - jack.getY();
 		if (Math.abs(diffx) < 600 && Math.abs(diffy) < 10) {
-			if ((diffx > 0 && enemy.getScaleX() == -1) || (diffx < 0 && enemy.getScaleX() == 1))
+			if ((diffx > 0 && enemy.getScaleX() == -1) || (diffx < 0 && enemy.getScaleX() == 1)) {
+				if (enemy.getScaleX() == -1 && enemy.hasAttacked == false) {
+					enemy.moveBy(-30, 0);
+					enemy.hasAttacked = true;
+				}
+
 				enemy.attack();
-			else
+			} else {
+				if (enemy.getScaleX() == -1 && enemy.hasAttacked == true) {
+					enemy.moveBy(+30, 0);
+					enemy.hasAttacked = false;
+				}
 				enemy.stand();
-		} else
+			}
+		} else {
+			if (enemy.getScaleX() == -1 && enemy.hasAttacked == true) {
+				enemy.moveBy(+30, 0);
+				enemy.hasAttacked = false;
+			}
 			enemy.stand();
+		}
+
 	}
 
 	public void zombieAttack() {
@@ -276,14 +299,14 @@ public abstract class LevelScreen extends BaseScreen {
 
 	}
 
-	public void zombieDamage(BaseActor other) {
+	public void contactDamage(BaseActor other) {
 		if (jack.overlaps(other)) {
-			if(jack.life <= 0)
+			if (jack.life <= 0)
 				controlLife();
 			else {
 				count++;
 				if (count == 48) {
-					jack.life = jack.life - 25 ;
+					jack.life = jack.life - 25;
 					if (jack.life <= 0)
 						jack.life = 0;
 					lifeLabel.setText("Life: " + (int) jack.life);
@@ -294,11 +317,10 @@ public abstract class LevelScreen extends BaseScreen {
 
 	}
 
-
 	public void fireDamageJack() {
-		if(!gameOver)
+		if (!gameOver)
 			controlLife();
-		if(jack.life>0) {
+		if (jack.life > 0) {
 			jack.life = jack.life - 25;
 			if (jack.life <= 0)
 				jack.life = 0;
@@ -309,17 +331,33 @@ public abstract class LevelScreen extends BaseScreen {
 	public void controlLife() {
 		if (jack.life <= 0) {
 			jack.dead();
+			resetCharacterAnimation();
 			Timer.schedule(new Task() {
 				@Override
 				public void run() {
+
 					messageLabel.setText("Game Over");
 					messageLabel.setColor(Color.RED);
 					messageLabel.setVisible(true);
 					jack.remove();
 					jack.setPosition(-1000, -1000);
+
 					gameOver = true;
 				}
 			}, 3.0f);
+		}
+	}
+
+	public void resetCharacterAnimation() {
+		for (BaseActor actor : BaseActor.getList(mainStage, Enemy.class.getName())) {
+			enemy = (Enemy) actor;
+			enemy.stand();
+		}
+
+		for (BaseActor actor : BaseActor.getList(mainStage, Zombie.class.getName())) {
+			zombie = (Zombie) actor;
+			zombie.speed = 0;
+
 		}
 	}
 }

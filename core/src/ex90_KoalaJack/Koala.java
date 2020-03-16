@@ -52,7 +52,7 @@ public class Koala extends BaseActor {
 		setBoundaryPolygon(15);
 
 		String[] fireFileNames = { "robot/Shoot (1).png", "robot/Shoot (2).png", "robot/Shoot (3).png",
-		"robot/Shoot (4).png" };
+				"robot/Shoot (4).png" };
 
 		fire = loadAnimationFromFiles(fireFileNames, 0.5f, true);
 
@@ -63,7 +63,7 @@ public class Koala extends BaseActor {
 		String[] jfallFileNames = { "robot/Jump (8).png", "robot/Jump (9).png" };
 		jfall = loadAnimationFromFiles(jfallFileNames, 0.29f, true);
 		jumpSpeed = 450;
-		
+
 		String[] deadFileNames = { "robot/Dead (1).png", "robot/Dead (2).png", "robot/Dead (3).png",
 				"robot/Dead (4).png", "robot/Dead (5).png", "robot/Dead (6).png", "robot/Dead (7).png",
 				"robot/Dead (8).png", "robot/Dead (9).png", "robot/Dead (10).png" };
@@ -74,7 +74,7 @@ public class Koala extends BaseActor {
 				"robot/run_shoot/RunShoot (5).png", "robot/run_shoot/RunShoot (6).png",
 				"robot/run_shoot/RunShoot (7).png", "robot/run_shoot/RunShoot (8).png" };
 		run_shoot = loadAnimationFromFiles(runshootFileNames, 0.25f, true);
-	
+
 		// set up the below sensor
 		belowSensor = new BaseActor(0, 0, s);
 		belowSensor.loadTexture("JumpingJack/white.png");
@@ -220,7 +220,7 @@ public class Koala extends BaseActor {
 			return;
 		if (d == false && fire_time <= 0) {
 			fire_animtime = 0.8f;
-			fire_time = 0.3f;
+			fire_time = 0.2f;
 			Laser laser = new Laser(0, 0, this.getStage());
 			laser.centerAtActor(this);
 			laser.setScaleX(this.getScaleX());

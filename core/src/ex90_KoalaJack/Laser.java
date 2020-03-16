@@ -19,8 +19,8 @@ public class Laser extends BaseActor
 		setMaxSpeed(350);
 		setDeceleration(0);
 	}
-	public void act(float dt)
-	{
+
+	public void act(float dt) {
 		super.act(dt);
 		applyPhysics(dt);
 		wrapAroundWorld();
