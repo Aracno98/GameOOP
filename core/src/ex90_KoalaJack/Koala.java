@@ -85,7 +85,7 @@ public class Koala extends BaseActor {
 		this.fire_animtime = 0f;
 		this.fire_time = 0f;
 		this.d = false;
-		this.life = 100f;
+		this.life = 150f;
 	}
 
 	public void act(float dt) {

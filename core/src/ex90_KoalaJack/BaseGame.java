@@ -53,7 +53,7 @@ public abstract class BaseGame extends Game {
 				new FreeTypeFontGenerator(Gdx.files.internal("crackman.ttf"));
 
 		FreeTypeFontParameter fontParameters = new FreeTypeFontParameter();
-		fontParameters.size = 30;
+		fontParameters.size = 50;
 		fontParameters.color = Color.WHITE;
 		fontParameters.borderWidth = 2;
 		fontParameters.borderColor = Color.BLACK;
@@ -66,11 +66,11 @@ public abstract class BaseGame extends Game {
 
 		textButtonStyle = new TextButtonStyle();
 
-		Texture   buttonTex   = new Texture( Gdx.files.internal("JumpingJack/button.png") );
+		Texture   buttonTex   = new Texture( Gdx.files.internal("JumpingJack/Button_05.png") );
 		NinePatch buttonPatch = new NinePatch(buttonTex, 24,24,24,24);
 		textButtonStyle.up    = new NinePatchDrawable( buttonPatch );
 		textButtonStyle.font = customFont;
-		textButtonStyle.fontColor = Color.BLUE;
+		textButtonStyle.fontColor = Color.BLACK;
 	}
 
 	/**

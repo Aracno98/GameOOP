@@ -169,11 +169,23 @@ public abstract class LevelScreen extends BaseScreen {
 			for (BaseActor actor : BaseActor.getList(mainStage, Enemy.class.getName())) {
 				if (laserActor.overlaps(actor)) {
 					Enemy enm = (Enemy) actor;
-					laserActor.remove();
-					enm.life -= 25;
+					Laser l = (Laser) laserActor;
+					l.removeAction(l.first);
+					l.setSpeed(0);
+
+					if (!l.getHit())
+						enm.life -= 25;
+					l.setHit();
 					if (enm.life <= 0) {
-						enm.setPosition(-1000, -1000);
-						enm.remove();
+						enm.addAction((Actions.fadeOut(0.3f)));
+						Timer.schedule(new Task() {
+							@Override
+							public void run() {
+								enm.setPosition(-1000, -1000);
+								enm.remove();
+							}
+						}, 0.3f);
+
 					}
 				}
 			}
@@ -181,11 +193,23 @@ public abstract class LevelScreen extends BaseScreen {
 
 				if (laserActor.overlaps(actor)) {
 					Zombie zomb = (Zombie) actor;
-					laserActor.remove();
-					zomb.life -= 25;
+					Laser l = (Laser) laserActor;
+					l.removeAction(l.first);
+					l.setSpeed(0);
+
+					if (!l.getHit())
+						zomb.life -= 25;
+					l.setHit();
+
 					if (zomb.life <= 0) {
-						zomb.setPosition(-1000, -1000);
-						zomb.remove();
+						zomb.addAction((Actions.fadeOut(0.3f)));
+						Timer.schedule(new Task() {
+							@Override
+							public void run() {
+								zomb.setPosition(-1000, -1000);
+								zomb.remove();
+							}
+						}, 0.3f);
 					}
 				}
 			}
@@ -193,7 +217,10 @@ public abstract class LevelScreen extends BaseScreen {
 			for (BaseActor actor : BaseActor.getList(mainStage, Solid.class.getName())) {
 				Solid solid = (Solid) actor;
 				if (laserActor.overlaps(solid)) {
-					laserActor.remove();
+					Laser l = (Laser) laserActor;
+					l.removeAction(l.first);
+					l.setSpeed(0);
+					
 				}
 			}
 
@@ -202,8 +229,14 @@ public abstract class LevelScreen extends BaseScreen {
 		// enemy hit jack
 		for (BaseActor laser2Actor : BaseActor.getList(mainStage, Laser2.class.getName())) {
 			if (laser2Actor.overlaps(jack)) {
-				fireDamageJack();
-				laser2Actor.remove();
+				Laser2 l = (Laser2) laser2Actor;
+				l.removeAction(l.first);
+				l.setSpeed(0);
+
+				if (!l.getHit())
+					fireDamageJack();
+				l.setHit();
+
 			}
 			for (BaseActor actor : BaseActor.getList(mainStage, Solid.class.getName())) {
 				Solid solid = (Solid) actor;
@@ -214,18 +247,6 @@ public abstract class LevelScreen extends BaseScreen {
 
 		}
 
-		/*
-		 * for (BaseActor fire : BaseActor.getList(mainStage, Laser.class.getName())) {
-		 * for (BaseActor wiz : BaseActor.getList(mainStage, Wizard.class.getName())) {
-		 * if ( fire.overlaps(wiz) ) { fire.remove(); coins += 3;
-		 * coinLabel.setText("Coins: " + coins);
-		 * wiz.setAnimation(wiz.loadAnimationFromSheet("Enemies/wizard_death.png", 1,
-		 * 10, 0.5f, false)); wiz.remove(); }
-		 * 
-		 * if ( jack.overlaps(wiz) ) { messageLabel.setText("You Lose!");
-		 * messageLabel.setColor(Color.RED); messageLabel.setVisible(true);
-		 * jack.remove(); gameOver = true; } } }
-		 */
 		// CONTROL JACK LIFE
 		controlLife();
 	}
