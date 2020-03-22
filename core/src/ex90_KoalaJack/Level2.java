@@ -16,7 +16,7 @@ public class Level2 extends LevelScreen {
 	private Music instrumental;
 
 	public void initialize() {
-		TilemapActor tma = new TilemapActor("Levels/map02.tmx", mainStage);
+		TilemapActor tma = new TilemapActor("Levels/map02R.tmx", mainStage);
 
 		for (MapObject obj : tma.getRectangleList("Solid")) {
 			MapProperties props = obj.getProperties();
@@ -30,6 +30,12 @@ public class Level2 extends LevelScreen {
 					(float) props.get("height"), mainStage);
 		}
 
+		for (MapObject obj : tma.getRectangleList("BlockMove")) {
+			MapProperties props = obj.getProperties();
+			new BlockMove((float) props.get("x"), (float) props.get("y"), (float) props.get("width"),
+					(float) props.get("height"), mainStage);
+		}
+	
 		MapObject startPoint = tma.getRectangleList("start").get(0);
 		MapProperties startProps = startPoint.getProperties();
 		jack = new Koala((float) startProps.get("x"), (float) startProps.get("y"), mainStage);
@@ -95,6 +101,13 @@ public class Level2 extends LevelScreen {
 		for (MapObject obj : tma.getRectangleList("Zombie")) {
 			MapProperties zomProps = obj.getProperties();
 			new Zombie((float) zomProps.get("x"), (float) zomProps.get("y"), mainStage);
+		}
+
+		for (MapObject obj : tma.getRectangleList("Enemy")) {
+			MapProperties enProps = obj.getProperties();
+			Enemy e = new Enemy((float) enProps.get("x"), (float) enProps.get("y"), mainStage);
+			float scale = Float.parseFloat((String) enProps.get("scale"));
+			e.setScaleX(scale);
 		}
 
 		jack.toFront();
