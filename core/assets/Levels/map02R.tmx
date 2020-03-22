@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="80" height="40" tilewidth="40" tileheight="40" infinite="0" nextlayerid="3" nextobjectid="343">
+ <tileset firstgid="1" name="dungeon-bricks" tilewidth="40" tileheight="40" tilecount="56" columns="8">
+  <image source="../Tiles/dungeon-bricks.png" width="320" height="280"/>
+ </tileset>
+ <tileset firstgid="57" name="object-tileset" tilewidth="40" tileheight="40" tilecount="7" columns="7">
+  <image source="../Tiles/object-tileset.png" width="280" height="40"/>
+  <tile id="0">
+   <properties>
+    <property name="name" value="Coin"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="name" value="Flag"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="name" value="Timer"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="name" value="Springboard"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="name" value="Platform"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="color" value="red"/>
+    <property name="name" value="Key"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="color" value="red"/>
+    <property name="name" value="Lock"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="64" name="platform-tileset" tilewidth="40" tileheight="40" tilecount="18" columns="6">
+  <image source="../Tiles/platform-tileset.png" width="240" height="120"/>
+ </tileset>
+ <layer id="1" name="Tile Layer 1" width="80" height="40">
+  <data encoding="csv">
+36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,
+36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,
+36,10,10,10,10,10,10,10,10,10,10,10,71,71,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,71,71,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,71,71,71,71,71,71,71,71,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,71,10,10,71,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,71,71,71,10,10,10,10,10,71,71,71,10,10,10,10,10,10,10,10,10,71,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,71,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,71,71,71,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,71,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,10,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,71,71,71,71,71,10,10,10,10,10,10,10,10,36,
+36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,10,10,10,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,
+36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,10,10,10,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,10,10,10,10,71,10,10,10,10,10,10,10,71,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,71,71,71,71,71,71,71,71,71,71,71,71,71,71,71,71,71,71,71,71,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,10,10,10,10,10,71,71,10,10,10,10,71,10,10,10,71,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,10,10,10,10,10,71,71,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,71,71,71,71,71,71,71,71,10,10,10,10,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,71,71,71,71,71,71,71,71,10,10,10,10,71,71,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,71,71,71,71,71,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,71,71,71,71,71,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,10,71,71,10,10,10,10,10,10,10,10,10,10,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,10,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,10,71,71,71,10,10,10,10,10,10,10,10,10,10,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,10,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,10,71,71,71,71,10,10,10,10,10,10,10,10,10,10,71,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,71,71,10,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,10,71,71,71,71,71,10,10,10,10,10,10,10,10,10,10,71,71,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,71,71,71,71,10,10,10,10,10,36,
+36,10,10,10,10,10,10,10,71,71,71,71,71,71,10,10,10,10,10,10,10,10,10,10,71,71,71,71,71,71,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,71,71,71,71,71,71,71,71,71,10,10,10,10,36,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,36
+</data>
+ </layer>
+ <objectgroup id="2" name="Object Layer 1">
+  <object id="1" x="0" y="0" width="40" height="1560">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="2" x="3160" y="0" width="40" height="1560">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="3" x="0" y="1560" width="3200" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="58" x="960" y="1360" width="80" height="200">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="59" x="1040" y="1400" width="40" height="160">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="60" x="1080" y="1440" width="40" height="120">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="61" x="1120" y="1480" width="40" height="80">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="62" x="1160" y="1520" width="40" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="64" x="240" y="1080" width="920" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="66" x="480" y="1360" width="80" height="200">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="67" x="440" y="1400" width="40" height="160">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="68" x="400" y="1440" width="40" height="120">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="69" x="360" y="1480" width="40" height="80">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="70" x="320" y="1520" width="40" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="89" x="1520" y="1200" width="440" height="160">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="90" x="1880" y="1040" width="80" height="160">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="91" x="1560" y="1120" width="120" height="80">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="105" x="1080" y="840" width="80" height="240">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="116" x="2120" y="840" width="40" height="400">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="117" x="2120" y="1240" width="200" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="118" x="2280" y="1120" width="160" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="119" x="2440" y="1040" width="160" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="121" x="2640" y="1520" width="360" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="123" x="2720" y="1440" width="200" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="124" x="2760" y="1400" width="120" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="125" x="2800" y="1360" width="40" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="126" x="2680" y="1480" width="280" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="127" x="40" y="0" width="3120" height="80">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="136" x="2640" y="560" width="40" height="200">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="137" x="2680" y="600" width="40" height="160">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="138" x="2720" y="640" width="40" height="120">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="139" x="2760" y="680" width="40" height="80">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="140" x="2800" y="720" width="40" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="141" x="1680" y="600" width="40" height="160">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="143" x="1720" y="680" width="40" height="80">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="144" x="2160" y="720" width="40" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="145" x="1200" y="440" width="80" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="146" x="1120" y="600" width="240" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="147" x="1160" y="560" width="160" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="190" x="40" y="480" width="40" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="191" x="160" y="480" width="40" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="192" x="40" y="600" width="40" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="193" x="160" y="600" width="40" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="194" x="240" y="720" width="120" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="195" x="320" y="680" width="40" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="196" x="360" y="560" width="120" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="197" x="480" y="80" width="200" height="80">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="198" x="520" y="200" width="120" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="199" x="560" y="160" width="40" height="160">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="200" x="560" y="440" width="40" height="120">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="201" x="680" y="560" width="120" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="202" x="880" y="720" width="120" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="203" x="960" y="680" width="40" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="204" x="2320" y="280" width="440" height="40">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="220" x="200" y="1520" width="40" height="40">
+   <properties>
+    <property name="name" value="start"/>
+   </properties>
+  </object>
+  <object id="221" x="2560" y="760" width="600" height="80">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="222" x="40" y="760" width="2400" height="80">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="227" gid="60" x="80" y="1560" width="40" height="40"/>
+  <object id="228" gid="61" x="80" y="1400" width="40" height="40"/>
+  <object id="229" gid="61" x="120" y="1400" width="40" height="40"/>
+  <object id="230" gid="61" x="40" y="1400" width="40" height="40"/>
+  <object id="231" gid="61" x="40" y="1280" width="40" height="40"/>
+  <object id="232" gid="61" x="80" y="1280" width="40" height="40"/>
+  <object id="233" gid="61" x="120" y="1280" width="40" height="40"/>
+  <object id="234" gid="61" x="40" y="1160" width="40" height="40"/>
+  <object id="235" gid="61" x="80" y="1160" width="40" height="40"/>
+  <object id="236" gid="61" x="120" y="1160" width="40" height="40"/>
+  <object id="237" gid="57" x="80" y="1000" width="40" height="40"/>
+  <object id="238" gid="57" x="80" y="1040" width="40" height="40"/>
+  <object id="239" gid="63" x="320" y="880" width="40" height="40">
+   <properties>
+    <property name="color" value="blue"/>
+   </properties>
+  </object>
+  <object id="240" gid="63" x="320" y="920" width="40" height="40">
+   <properties>
+    <property name="color" value="blue"/>
+   </properties>
+  </object>
+  <object id="241" gid="63" x="320" y="960" width="40" height="40">
+   <properties>
+    <property name="color" value="blue"/>
+   </properties>
+  </object>
+  <object id="242" gid="63" x="320" y="1000" width="40" height="40">
+   <properties>
+    <property name="color" value="blue"/>
+   </properties>
+  </object>
+  <object id="243" gid="57" x="480" y="1080" width="40" height="40"/>
+  <object id="244" gid="59" x="680" y="1080" width="40" height="40"/>
+  <object id="245" gid="57" x="880" y="1080" width="40" height="40"/>
+  <object id="246" gid="62" x="1000" y="1080" width="40" height="40">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object id="248" gid="61" x="640" y="1480" width="40" height="40"/>
+  <object id="249" gid="61" x="680" y="1480" width="40" height="40"/>
+  <object id="250" gid="61" x="720" y="1480" width="40" height="40"/>
+  <object id="251" gid="61" x="760" y="1480" width="40" height="40"/>
+  <object id="252" gid="61" x="800" y="1480" width="40" height="40"/>
+  <object id="253" gid="61" x="840" y="1480" width="40" height="40"/>
+  <object id="254" gid="63" x="320" y="1040" width="40" height="40">
+   <properties>
+    <property name="color" value="blue"/>
+   </properties>
+  </object>
+  <object id="255" gid="63" x="320" y="1080" width="40" height="40">
+   <properties>
+    <property name="color" value="blue"/>
+   </properties>
+  </object>
+  <object id="256" gid="60" x="1320" y="1560" width="40" height="40"/>
+  <object id="257" gid="61" x="1280" y="1360" width="40" height="40"/>
+  <object id="258" gid="61" x="1320" y="1360" width="40" height="40"/>
+  <object id="259" gid="61" x="1360" y="1360" width="40" height="40"/>
+  <object id="260" gid="61" x="1280" y="1240" width="40" height="40"/>
+  <object id="261" gid="61" x="1320" y="1240" width="40" height="40"/>
+  <object id="262" gid="61" x="1360" y="1240" width="40" height="40"/>
+  <object id="263" gid="63" x="1520" y="1400" width="40" height="40"/>
+  <object id="264" gid="63" x="1520" y="1440" width="40" height="40"/>
+  <object id="265" gid="63" x="1520" y="1480" width="40" height="40"/>
+  <object id="266" gid="63" x="1520" y="1520" width="40" height="40"/>
+  <object id="267" gid="63" x="1520" y="1560" width="40" height="40"/>
+  <object id="268" gid="63" x="1920" y="1400" width="40" height="40"/>
+  <object id="269" gid="63" x="1920" y="1440" width="40" height="40"/>
+  <object id="270" gid="63" x="1920" y="1480" width="40" height="40"/>
+  <object id="271" gid="63" x="1920" y="1520" width="40" height="40"/>
+  <object id="272" gid="63" x="1920" y="1560" width="40" height="40"/>
+  <object id="273" gid="61" x="2400" y="1360" width="40" height="40"/>
+  <object id="274" gid="61" x="2440" y="1360" width="40" height="40"/>
+  <object id="275" gid="61" x="2480" y="1360" width="40" height="40"/>
+  <object id="276" gid="61" x="2680" y="1360" width="40" height="40"/>
+  <object id="277" gid="61" x="2640" y="1360" width="40" height="40"/>
+  <object id="278" gid="61" x="2600" y="1360" width="40" height="40"/>
+  <object id="279" gid="62" x="2640" y="480" width="40" height="40">
+   <properties>
+    <property name="color" value="red"/>
+   </properties>
+  </object>
+  <object id="280" gid="57" x="1280" y="720" width="40" height="40"/>
+  <object id="281" gid="57" x="1160" y="720" width="40" height="40"/>
+  <object id="282" gid="60" x="80" y="760" width="40" height="40"/>
+  <object id="283" gid="57" x="80" y="640" width="40" height="40"/>
+  <object id="284" gid="57" x="120" y="600" width="40" height="40"/>
+  <object id="285" gid="57" x="80" y="560" width="40" height="40"/>
+  <object id="286" gid="57" x="120" y="520" width="40" height="40"/>
+  <object id="287" gid="57" x="80" y="480" width="40" height="40"/>
+  <object id="288" gid="57" x="120" y="440" width="40" height="40"/>
+  <object id="289" gid="58" x="560" y="760" width="40" height="40"/>
+  <object id="290" gid="63" x="360" y="680" width="40" height="40">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object id="291" gid="63" x="360" y="640" width="40" height="40">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object id="292" gid="63" x="480" y="600" width="40" height="40">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object id="293" gid="63" x="520" y="600" width="40" height="40">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object id="294" gid="63" x="560" y="600" width="40" height="40">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object id="295" gid="63" x="760" y="640" width="40" height="40"/>
+  <object id="296" gid="63" x="600" y="600" width="40" height="40">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object id="297" gid="63" x="640" y="600" width="40" height="40">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object id="298" gid="63" x="760" y="680" width="40" height="40">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object id="299" gid="63" x="760" y="720" width="40" height="40">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object id="300" gid="59" x="1240" y="520" width="40" height="40"/>
+  <object id="301" gid="61" x="1360" y="440" width="40" height="40"/>
+  <object id="302" gid="61" x="1400" y="440" width="40" height="40"/>
+  <object id="303" gid="61" x="1440" y="440" width="40" height="40"/>
+  <object id="304" gid="61" x="1640" y="320" width="40" height="40"/>
+  <object id="305" gid="61" x="1680" y="320" width="40" height="40"/>
+  <object id="306" gid="61" x="1720" y="320" width="40" height="40"/>
+  <object id="307" gid="61" x="1880" y="320" width="40" height="40"/>
+  <object id="308" gid="61" x="1920" y="320" width="40" height="40"/>
+  <object id="310" gid="61" x="2080" y="320" width="40" height="40"/>
+  <object id="311" gid="61" x="2120" y="320" width="40" height="40"/>
+  <object id="312" gid="61" x="2160" y="320" width="40" height="40"/>
+  <object id="314" gid="62" x="1680" y="1520" width="40" height="40">
+   <properties>
+    <property name="color" value="blue"/>
+   </properties>
+  </object>
+  <object id="315" gid="60" x="2480" y="1040" width="40" height="40"/>
+  <object id="316" x="960" y="1320" width="40" height="40">
+   <properties>
+    <property name="name" value="Enemy"/>
+    <property name="scale" value="-1"/>
+   </properties>
+  </object>
+  <object id="317" x="2160" y="1520" width="40" height="40">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="318" x="2400" y="1520" width="40" height="40">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="320" x="2600" y="1520" width="40" height="40">
+   <properties>
+    <property name="name" value="BlockMove"/>
+   </properties>
+  </object>
+  <object id="321" x="1960" y="1520" width="40" height="40">
+   <properties>
+    <property name="name" value="BlockMove"/>
+   </properties>
+  </object>
+  <object id="322" x="1880" y="1000" width="40" height="40">
+   <properties>
+    <property name="name" value="Enemy"/>
+    <property name="scale" value="-1"/>
+   </properties>
+  </object>
+  <object id="323" x="2320" y="240" width="40" height="40">
+   <properties>
+    <property name="name" value="Enemy"/>
+    <property name="scale" value="-1"/>
+   </properties>
+  </object>
+  <object id="324" x="2680" y="240" width="40" height="40">
+   <properties>
+    <property name="name" value="Enemy"/>
+    <property name="scale" value="-1"/>
+   </properties>
+  </object>
+  <object id="325" x="720" y="520" width="40" height="40">
+   <properties>
+    <property name="name" value="Enemy"/>
+    <property name="scale" value="1"/>
+   </properties>
+  </object>
+  <object id="326" x="1920" y="720" width="40" height="40">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="327" x="1760" y="720" width="40" height="40">
+   <properties>
+    <property name="name" value="BlockMove"/>
+   </properties>
+  </object>
+  <object id="328" x="2120" y="720" width="40" height="40">
+   <properties>
+    <property name="name" value="BlockMove"/>
+   </properties>
+  </object>
+  <object id="329" gid="63" x="760" y="760" width="40" height="40">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object id="330" gid="63" x="360" y="720" width="40" height="40">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object id="331" gid="63" x="360" y="760" width="40" height="40">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object id="332" gid="61" x="1520" y="360" width="40" height="40"/>
+  <object id="333" gid="61" x="1560" y="360" width="40" height="40"/>
+  <object id="335" gid="57" x="3080" y="1480" width="40" height="40"/>
+  <object id="337" gid="57" x="3080" y="1400" width="40" height="40"/>
+  <object id="338" gid="59" x="3080" y="1440" width="40" height="40"/>
+  <object id="339" gid="57" x="3000" y="720" width="40" height="40"/>
+  <object id="340" gid="57" x="3000" y="680" width="40" height="40"/>
+  <object id="341" gid="57" x="3040" y="680" width="40" height="40"/>
+  <object id="342" gid="57" x="3040" y="720" width="40" height="40"/>
+ </objectgroup>
+</map>
