@@ -1,4 +1,4 @@
-package ex90_KoalaJack;
+package gameProject;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 

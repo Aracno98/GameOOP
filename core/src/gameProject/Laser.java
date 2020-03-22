@@ -1,4 +1,4 @@
-package ex90_KoalaJack;
+package gameProject;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -17,7 +17,7 @@ public class Laser extends BaseActor {
 		addAction(first);
 		addAction(Actions.after(Actions.fadeOut(0.3f)));
 		addAction(Actions.after(Actions.removeActor()));
-		setSpeed(250);
+		setSpeed(300);
 		setMaxSpeed(350);
 		setDeceleration(0);
 		hit = false;

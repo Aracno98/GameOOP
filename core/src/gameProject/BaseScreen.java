@@ -1,4 +1,4 @@
-package ex90_KoalaJack;
+package gameProject;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;

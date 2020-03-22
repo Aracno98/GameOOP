@@ -3,7 +3,7 @@ package ex90_KoalaJackDesktop;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 
-import ex90_KoalaJack.JumpingJackGame;
+import gameProject.JumpingJackGame;
 
 public class Launcher {
 	public static void main (String[] args) {

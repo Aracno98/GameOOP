@@ -1,4 +1,4 @@
-package ex90_KoalaJack;
+package gameProject;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.Gdx;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 public abstract class LevelScreen extends BaseScreen {
-	Koala jack;
+	Robot jack;
 	Enemy enemy;
 	Zombie zombie;
 
@@ -38,8 +38,10 @@ public abstract class LevelScreen extends BaseScreen {
 
 		for (BaseActor voidFall : BaseActor.getList(mainStage, VoidFall.class.getName())) {
 			if (jack.overlaps(voidFall)) {
-				messageLabel.setText("You Lose!");
+				messageLabel.setText("GAME OVER!");
 				messageLabel.setColor(Color.RED);
+				// messageLabel.setPosition(Gdx.graphics.getWidth()/2,
+				// Gdx.graphics.getHeight()/2);
 				messageLabel.setVisible(true);
 				jack.remove();
 				resetCharacterAnimation();
@@ -220,7 +222,7 @@ public abstract class LevelScreen extends BaseScreen {
 					Laser l = (Laser) laserActor;
 					l.removeAction(l.first);
 					l.setSpeed(0);
-					
+
 				}
 			}
 
@@ -278,7 +280,8 @@ public abstract class LevelScreen extends BaseScreen {
 	}
 
 	public void enemyAttack() {
-
+		if (jack.isDead())
+			return;
 		float diffx = enemy.getX() - jack.getX();
 		float diffy = enemy.getY() - jack.getY();
 		if (Math.abs(diffx) < 600 && Math.abs(diffy) < 10) {
@@ -307,7 +310,8 @@ public abstract class LevelScreen extends BaseScreen {
 	}
 
 	public void zombieAttack() {
-
+		if (jack.isDead())
+			return;
 		float diffx = zombie.getX() - jack.getX();
 		float diffy = zombie.getY() - jack.getY();
 		if (Math.abs(diffx) < 30 && Math.abs(diffy) < 6) {

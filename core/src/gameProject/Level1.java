@@ -1,4 +1,4 @@
-package ex90_KoalaJack;
+package gameProject;
 
 import java.util.ArrayList;
 
@@ -11,12 +11,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.audio.Music;
 
-public class Level2 extends LevelScreen {
+public class Level1 extends LevelScreen {
 	private float audioVolume;
 	private Music instrumental;
 
 	public void initialize() {
-		TilemapActor tma = new TilemapActor("Levels/map02.tmx", mainStage);
+		TilemapActor tma = new TilemapActor("Levels/map01.tmx", mainStage);
 
 		for (MapObject obj : tma.getRectangleList("Solid")) {
 			MapProperties props = obj.getProperties();
@@ -30,9 +30,15 @@ public class Level2 extends LevelScreen {
 					(float) props.get("height"), mainStage);
 		}
 
+		for (MapObject obj : tma.getRectangleList("BlockMove")) {
+			MapProperties props = obj.getProperties();
+			new BlockMove((float) props.get("x"), (float) props.get("y"), (float) props.get("width"),
+					(float) props.get("height"), mainStage);
+		}
+
 		MapObject startPoint = tma.getRectangleList("start").get(0);
 		MapProperties startProps = startPoint.getProperties();
-		jack = new Koala((float) startProps.get("x"), (float) startProps.get("y"), mainStage);
+		jack = new Robot((float) startProps.get("x"), (float) startProps.get("y"), mainStage);
 
 		for (MapObject obj : tma.getTileList("Flag")) {
 			MapProperties props = obj.getProperties();
@@ -97,6 +103,13 @@ public class Level2 extends LevelScreen {
 			new Zombie((float) zomProps.get("x"), (float) zomProps.get("y"), mainStage);
 		}
 
+		for (MapObject obj : tma.getRectangleList("Enemy")) {
+			MapProperties enProps = obj.getProperties();
+			Enemy e = new Enemy((float) enProps.get("x"), (float) enProps.get("y"), mainStage);
+			float scale = Float.parseFloat((String) enProps.get("scale"));
+			e.setScaleX(scale);
+		}
+
 		jack.toFront();
 
 		gameOver = false;
@@ -118,7 +131,7 @@ public class Level2 extends LevelScreen {
 		uiTable.add(timeLabel);
 		uiTable.add(lifeLabel);
 		uiTable.row();
-		uiTable.add(messageLabel).colspan(3).expandY();
+		uiTable.add(messageLabel).colspan(4).expandY();
 
 		keyList = new ArrayList<Color>();
 
@@ -143,7 +156,7 @@ public class Level2 extends LevelScreen {
 		if (gameOver) {
 			if (keyCode == Keys.C) {
 				this.instrumental.dispose();
-				JumpingJackGame.setActiveScreen(new MenuScreen());
+				JumpingJackGame.setActiveScreen(new Level2());
 			}
 
 			return false;

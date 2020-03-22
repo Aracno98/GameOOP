@@ -1,4 +1,4 @@
-package ex90_KoalaJack;
+package gameProject;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class Koala extends BaseActor {
+public class Robot extends BaseActor {
 	private Animation<TextureRegion> stand;
 	private Animation<TextureRegion> walk;
 	private Animation<TextureRegion> jump;
@@ -32,7 +32,7 @@ public class Koala extends BaseActor {
 	private float jumpSpeed;
 	public BaseActor belowSensor;
 
-	public Koala(float x, float y, Stage s) {
+	public Robot(float x, float y, Stage s) {
 		super(x, y, s);
 		String[] standFileNames = { "robot/Idle (1).png", "robot/Idle (2).png", "robot/Idle (3).png",
 				"robot/Idle (4).png", "robot/Idle (5).png", "robot/Idle (6).png", "robot/Idle (7).png",

@@ -1,4 +1,4 @@
-package ex90_KoalaJack;
+package gameProject;
 
 public class JumpingJackGame extends BaseGame {
 	public void create() {        
