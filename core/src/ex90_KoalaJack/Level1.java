@@ -16,7 +16,7 @@ public class Level1 extends LevelScreen {
 	private Music instrumental;
 
 	public void initialize() {
-		TilemapActor tma = new TilemapActor("Levels/map01.tmx", mainStage);
+		TilemapActor tma = new TilemapActor("Levels/map01R.tmx", mainStage);
 
 		for (MapObject obj : tma.getRectangleList("Solid")) {
 			MapProperties props = obj.getProperties();
