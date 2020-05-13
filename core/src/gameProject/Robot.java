@@ -140,7 +140,7 @@ public class Robot extends BaseActor {
 		// reset acceleration
 		accelerationVec.set(0, 0);
 
-		// move the below sensor below the koala
+		// move the below sensor below the robot
 		belowSensor.setPosition(getX() + 4, getY() - 8);
 
 		// manage animations

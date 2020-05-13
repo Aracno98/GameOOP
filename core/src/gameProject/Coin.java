@@ -12,5 +12,10 @@ public class Coin extends BaseActor {
 		loadTexture("JumpingJack/items/coin.png");
 		float random = MathUtils.random(30);
 		addAction( Actions.forever( Actions.rotateBy(30 + random, 1) ) );
+		Action pulse = Actions.sequence(
+				Actions.scaleTo(1.1f, 1.1f, 0.5f),
+				Actions.scaleTo(1.0f, 1.0f, 0.5f) );
+
+		addAction( Actions.forever(pulse) );
 	}    
 }

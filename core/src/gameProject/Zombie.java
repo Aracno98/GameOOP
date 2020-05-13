@@ -1,13 +1,14 @@
 package gameProject;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Zombie extends BaseActor {
 
-	private Animation walk;
-	private Animation attack;
-	private Animation dead;
+	private Animation<TextureRegion> walk;
+	private Animation<TextureRegion> attack;
+
 
 	protected boolean move;
 	protected float speed;

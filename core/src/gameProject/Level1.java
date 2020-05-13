@@ -14,6 +14,8 @@ import com.badlogic.gdx.audio.Music;
 public class Level1 extends LevelScreen {
 	private float audioVolume;
 	private Music instrumental;
+	private float tot_life;
+	ArrayList<LifeBar> lifeList;
 
 	public void initialize() {
 		TilemapActor tma = new TilemapActor("Levels/map01R.tmx", mainStage);
@@ -50,9 +52,9 @@ public class Level1 extends LevelScreen {
 			new Coin((float) props.get("x"), (float) props.get("y"), mainStage);
 		}
 
-		for (MapObject obj : tma.getTileList("Timer")) {
+		for (MapObject obj : tma.getTileList("Health")) {
 			MapProperties props = obj.getProperties();
-			new Timer2((float) props.get("x"), (float) props.get("y"), mainStage);
+			new Health((float) props.get("x"), (float) props.get("y"), mainStage);
 		}
 
 		for (MapObject obj : tma.getTileList("Springboard")) {
@@ -116,7 +118,7 @@ public class Level1 extends LevelScreen {
 		coins = 0;
 		time = 150;
 
-		coinLabel = new Label("Coins: " + coins, BaseGame.labelStyle);
+		coinLabel = new Label("  " + coins, BaseGame.labelStyle);
 		coinLabel.setColor(Color.GOLD);
 		keyTable = new Table();
 		timeLabel = new Label("Time: " + (int) time, BaseGame.labelStyle);
@@ -125,13 +127,24 @@ public class Level1 extends LevelScreen {
 		messageLabel.setVisible(false);
 		lifeLabel = new Label("Life: " + (int) jack.life, BaseGame.labelStyle);
 
-		uiTable.pad(20);
+		BaseActor coin_bar = new BaseActor(0, 0, mainStage);
+		coin_bar.loadTexture("JumpingJack/items/frame-1.png");
+
+		lifeList = new ArrayList<LifeBar>();
+
+		uiTable.pad(10);
+		uiTable.add(coin_bar);
 		uiTable.add(coinLabel);
 		uiTable.add(keyTable).expandX();
 		uiTable.add(timeLabel);
-		uiTable.add(lifeLabel);
+		for (int i = 0; i < jack.life / 25; i++) {
+			LifeBar l = new LifeBar(0, 0, mainStage);
+			lifeList.add(l);
+			uiTable.add(l);
+		}
+
 		uiTable.row();
-		uiTable.add(messageLabel).colspan(4).expandY();
+		uiTable.add(messageLabel).colspan(9).expandY();
 
 		keyList = new ArrayList<Color>();
 
@@ -143,11 +156,54 @@ public class Level1 extends LevelScreen {
 		instrumental.play();
 
 		count = 0;
+		tot_life = jack.life;
 	}
 
 	public void update(float dt) {
 		super.update(dt);
 
+		for (BaseActor voidFall : BaseActor.getList(mainStage, VoidFall.class.getName())) {
+			if (jack.overlaps(voidFall)) {
+				messageLabel.setText("GAME OVER!");
+				messageLabel.setColor(Color.RED);
+				// messageLabel.setPosition(Gdx.graphics.getWidth()/2,
+				// Gdx.graphics.getHeight()/2);
+				
+				messageLabel.setVisible(true);
+				jack.life = 0;
+				jack.remove();
+				resetCharacterAnimation();
+				lifeBarStatus();
+				gameOver = true;
+			}
+		}
+
+		lifeBarStatus();
+
+	}
+
+	public void lifeBarStatus() {
+		if (jack.life == 0) {
+			float r = 0;
+			float k = tot_life / 25 - 1;
+			while (r <= k) {
+				LifeBar x = lifeList.get((int) k);
+				x.setVisible(false);
+				k--;
+			}
+		} else {
+			float r = jack.life / 25 - 1;
+			float k = tot_life / 25 - 1;
+			while (k != r && r < k) {
+				LifeBar x = lifeList.get((int) k);
+				x.setVisible(false);
+				k--;
+			}
+			for (int i = 0; i <= r; i++) {
+				LifeBar x = lifeList.get((int) i);
+				x.setVisible(true);
+			}
+		}
 	}
 
 	public boolean keyDown(int keyCode) {

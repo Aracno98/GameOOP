@@ -52,7 +52,7 @@ public class Level2 extends LevelScreen {
 
 		for (MapObject obj : tma.getTileList("Timer")) {
 			MapProperties props = obj.getProperties();
-			new Timer2((float) props.get("x"), (float) props.get("y"), mainStage);
+			new Health((float) props.get("x"), (float) props.get("y"), mainStage);
 		}
 
 		for (MapObject obj : tma.getTileList("Springboard")) {

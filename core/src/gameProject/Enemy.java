@@ -1,11 +1,12 @@
 package gameProject;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Enemy extends BaseActor {
-	protected Animation stand;
-	protected Animation attack;
+	protected Animation<TextureRegion> stand;
+	protected Animation<TextureRegion> attack;
 
 	private float fire_time;
 	protected float life;

@@ -36,18 +36,6 @@ public abstract class LevelScreen extends BaseScreen {
 		if (gameOver)
 			return;
 
-		for (BaseActor voidFall : BaseActor.getList(mainStage, VoidFall.class.getName())) {
-			if (jack.overlaps(voidFall)) {
-				messageLabel.setText("GAME OVER!");
-				messageLabel.setColor(Color.RED);
-				// messageLabel.setPosition(Gdx.graphics.getWidth()/2,
-				// Gdx.graphics.getHeight()/2);
-				messageLabel.setVisible(true);
-				jack.remove();
-				resetCharacterAnimation();
-				gameOver = true;
-			}
-		}
 
 		for (BaseActor flag : BaseActor.getList(mainStage, Flag.class.getName())) {
 			if (jack.overlaps(flag)) {
@@ -62,7 +50,7 @@ public abstract class LevelScreen extends BaseScreen {
 		for (BaseActor coin : BaseActor.getList(mainStage, Coin.class.getName())) {
 			if (jack.overlaps(coin)) {
 				coins++;
-				coinLabel.setText("Coins: " + coins);
+				coinLabel.setText("  " + coins);
 				coin.remove();
 			}
 		}
@@ -70,10 +58,14 @@ public abstract class LevelScreen extends BaseScreen {
 		time -= dt;
 		timeLabel.setText("Time: " + (int) time);
 
-		for (BaseActor timer : BaseActor.getList(mainStage, Timer2.class.getName())) {
-			if (jack.overlaps(timer)) {
-				time += 30;
-				timer.remove();
+		for (BaseActor health : BaseActor.getList(mainStage, Health.class.getName())) {
+			if (jack.overlaps(health)) {
+				if(jack.life < 150) {
+					jack.life += 25;
+					lifeLabel.setText("Life: " + (int) jack.life);
+					health.remove();
+				}	
+				
 			}
 		}
 
@@ -251,6 +243,7 @@ public abstract class LevelScreen extends BaseScreen {
 
 		// CONTROL JACK LIFE
 		controlLife();
+	
 	}
 
 	public boolean keyDown(int keyCode) {
@@ -382,7 +375,9 @@ public abstract class LevelScreen extends BaseScreen {
 		for (BaseActor actor : BaseActor.getList(mainStage, Zombie.class.getName())) {
 			zombie = (Zombie) actor;
 			zombie.speed = 0;
+			zombie.setAnimationPaused(true);
 
 		}
 	}
+	
 }
