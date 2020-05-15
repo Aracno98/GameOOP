@@ -17,11 +17,11 @@ public abstract class LevelScreen extends BaseScreen {
 	Enemy enemy;
 	Zombie zombie;
 
-	boolean gameOver;
-	int coins;
-	float time;
-	int count;
-
+	protected boolean gameOver;
+	protected int coins;
+	protected float time;
+	protected int count;
+	protected float tot_life;
 	Label coinLabel;
 	Label timeLabel;
 	Label messageLabel;
@@ -29,6 +29,8 @@ public abstract class LevelScreen extends BaseScreen {
 	Label lifeLabel;
 
 	ArrayList<Color> keyList;
+	ArrayList<LifeBar> lifeList;
+
 
 	public abstract void initialize();
 
@@ -363,6 +365,30 @@ public abstract class LevelScreen extends BaseScreen {
 					gameOver = true;
 				}
 			}, 3.0f);
+		}
+	}
+	
+	public void lifeBarStatus() {
+		if (jack.life == 0) {
+			float r = 0;
+			float k = tot_life / 25 - 1;
+			while (r <= k) {
+				LifeBar x = lifeList.get((int) k);
+				x.setVisible(false);
+				k--;
+			}
+		} else {
+			float r = jack.life / 25 - 1;
+			float k = tot_life / 25 - 1;
+			while (k != r && r < k) {
+				LifeBar x = lifeList.get((int) k);
+				x.setVisible(false);
+				k--;
+			}
+			for (int i = 0; i <= r; i++) {
+				LifeBar x = lifeList.get((int) i);
+				x.setVisible(true);
+			}
 		}
 	}
 

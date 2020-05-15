@@ -14,9 +14,8 @@ import com.badlogic.gdx.audio.Music;
 public class Level1 extends LevelScreen {
 	private float audioVolume;
 	private Music instrumental;
-	private float tot_life;
-	ArrayList<LifeBar> lifeList;
-
+	
+	
 	public void initialize() {
 		TilemapActor tma = new TilemapActor("Levels/map01R.tmx", mainStage);
 
@@ -95,10 +94,10 @@ public class Level1 extends LevelScreen {
 				lock.setColor(Color.WHITE);
 		}
 
-		for (MapObject obj : tma.getRectangleList("Wizard")) {
+		/*for (MapObject obj : tma.getRectangleList("Wizard")) {
 			MapProperties props = obj.getProperties();
 			new Wizard((float) props.get("x"), (float) props.get("y"), mainStage);
-		}
+		}*/
 
 		for (MapObject obj : tma.getRectangleList("Zombie")) {
 			MapProperties zomProps = obj.getProperties();
@@ -132,7 +131,7 @@ public class Level1 extends LevelScreen {
 
 		lifeList = new ArrayList<LifeBar>();
 
-		uiTable.pad(10);
+		uiTable.pad(20);
 		uiTable.add(coin_bar);
 		uiTable.add(coinLabel);
 		uiTable.add(keyTable).expandX();
@@ -182,29 +181,7 @@ public class Level1 extends LevelScreen {
 
 	}
 
-	public void lifeBarStatus() {
-		if (jack.life == 0) {
-			float r = 0;
-			float k = tot_life / 25 - 1;
-			while (r <= k) {
-				LifeBar x = lifeList.get((int) k);
-				x.setVisible(false);
-				k--;
-			}
-		} else {
-			float r = jack.life / 25 - 1;
-			float k = tot_life / 25 - 1;
-			while (k != r && r < k) {
-				LifeBar x = lifeList.get((int) k);
-				x.setVisible(false);
-				k--;
-			}
-			for (int i = 0; i <= r; i++) {
-				LifeBar x = lifeList.get((int) i);
-				x.setVisible(true);
-			}
-		}
-	}
+
 
 	public boolean keyDown(int keyCode) {
 		super.keyDown(keyCode);

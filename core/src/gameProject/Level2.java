@@ -116,7 +116,7 @@ public class Level2 extends LevelScreen {
 		coins = 0;
 		time = 150;
 
-		coinLabel = new Label("Coins: " + coins, BaseGame.labelStyle);
+		coinLabel = new Label("  " + coins, BaseGame.labelStyle);
 		coinLabel.setColor(Color.GOLD);
 		keyTable = new Table();
 		timeLabel = new Label("Time: " + (int) time, BaseGame.labelStyle);
@@ -125,11 +125,21 @@ public class Level2 extends LevelScreen {
 		messageLabel.setVisible(false);
 		lifeLabel = new Label("Life: " + (int) jack.life, BaseGame.labelStyle);
 
-		uiTable.pad(20);
+		BaseActor coin_bar = new BaseActor(0, 0, mainStage);
+		coin_bar.loadTexture("JumpingJack/items/frame-1.png");
+
+		lifeList = new ArrayList<LifeBar>();
+
+		uiTable.pad(10);
+		uiTable.add(coin_bar);
 		uiTable.add(coinLabel);
 		uiTable.add(keyTable).expandX();
 		uiTable.add(timeLabel);
-		uiTable.add(lifeLabel);
+		for (int i = 0; i < jack.life / 25; i++) {
+			LifeBar l = new LifeBar(0, 0, mainStage);
+			lifeList.add(l);
+			uiTable.add(l);
+		}
 		uiTable.row();
 		uiTable.add(messageLabel).colspan(3).expandY();
 
@@ -143,11 +153,12 @@ public class Level2 extends LevelScreen {
 		instrumental.play();
 
 		count = 0;
+		tot_life = jack.life;
 	}
 
 	public void update(float dt) {
 		super.update(dt);
-
+		lifeBarStatus();
 	}
 
 	public boolean keyDown(int keyCode) {
