@@ -152,7 +152,7 @@ public class Level2 extends LevelScreen {
 		instrumental.setVolume(audioVolume);
 		instrumental.play();
 
-		count = 0;
+		//count = 0;
 		tot_life = jack.life;
 	}
 

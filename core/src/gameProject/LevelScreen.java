@@ -22,15 +22,16 @@ public abstract class LevelScreen extends BaseScreen {
 	protected float time;
 	protected int count;
 	protected float tot_life;
+
 	Label coinLabel;
 	Label timeLabel;
 	Label messageLabel;
 	Table keyTable;
 	Label lifeLabel;
+	Label coinRequestLabel;
 
 	ArrayList<Color> keyList;
 	ArrayList<LifeBar> lifeList;
-
 
 	public abstract void initialize();
 
@@ -38,14 +39,26 @@ public abstract class LevelScreen extends BaseScreen {
 		if (gameOver)
 			return;
 
-
 		for (BaseActor flag : BaseActor.getList(mainStage, Flag.class.getName())) {
 			if (jack.overlaps(flag)) {
-				messageLabel.setText("You Win!\nPress C to continue");
-				messageLabel.setColor(Color.LIME);
-				messageLabel.setVisible(true);
-				jack.remove();
-				gameOver = true;
+				if (coins >= 10) {
+					messageLabel.setText("You Win!\nPress C to continue");
+					messageLabel.setColor(Color.LIME);
+					messageLabel.setVisible(true);
+					jack.remove();
+					gameOver = true;
+				} else {
+					messageLabel.setText("You need more COINS");
+					messageLabel.setColor(Color.SKY);
+					messageLabel.setVisible(true);
+					Timer.schedule(new Task() {
+						@Override
+						public void run() {
+							messageLabel.setVisible(false);
+						}
+					}, 1.5f);
+				}
+
 			}
 		}
 
@@ -62,12 +75,12 @@ public abstract class LevelScreen extends BaseScreen {
 
 		for (BaseActor health : BaseActor.getList(mainStage, Health.class.getName())) {
 			if (jack.overlaps(health)) {
-				if(jack.life < 150) {
+				if (jack.life < 150) {
 					jack.life += 25;
 					lifeLabel.setText("Life: " + (int) jack.life);
 					health.remove();
-				}	
-				
+				}
+
 			}
 		}
 
@@ -245,7 +258,7 @@ public abstract class LevelScreen extends BaseScreen {
 
 		// CONTROL JACK LIFE
 		controlLife();
-	
+
 	}
 
 	public boolean keyDown(int keyCode) {
@@ -367,7 +380,7 @@ public abstract class LevelScreen extends BaseScreen {
 			}, 3.0f);
 		}
 	}
-	
+
 	public void lifeBarStatus() {
 		if (jack.life == 0) {
 			float r = 0;
@@ -405,5 +418,5 @@ public abstract class LevelScreen extends BaseScreen {
 
 		}
 	}
-	
+
 }
