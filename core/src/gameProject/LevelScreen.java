@@ -18,17 +18,14 @@ public abstract class LevelScreen extends BaseScreen {
 	Zombie zombie;
 
 	protected boolean gameOver;
+	protected boolean death;
 	protected int coins;
-	protected float time;
 	protected int count;
 	protected float tot_life;
-
 	Label coinLabel;
-	Label timeLabel;
 	Label messageLabel;
 	Table keyTable;
 	Label lifeLabel;
-	Label coinRequestLabel;
 
 	ArrayList<Color> keyList;
 	ArrayList<LifeBar> lifeList;
@@ -41,24 +38,11 @@ public abstract class LevelScreen extends BaseScreen {
 
 		for (BaseActor flag : BaseActor.getList(mainStage, Flag.class.getName())) {
 			if (jack.overlaps(flag)) {
-				if (coins >= 10) {
-					messageLabel.setText("You Win!\nPress C to continue");
-					messageLabel.setColor(Color.LIME);
-					messageLabel.setVisible(true);
-					jack.remove();
-					gameOver = true;
-				} else {
-					messageLabel.setText("You need more COINS");
-					messageLabel.setColor(Color.SKY);
-					messageLabel.setVisible(true);
-					Timer.schedule(new Task() {
-						@Override
-						public void run() {
-							messageLabel.setVisible(false);
-						}
-					}, 1.5f);
-				}
-
+				messageLabel.setText("You Win!\nPress C to continue");
+				messageLabel.setColor(Color.LIME);
+				messageLabel.setVisible(true);
+				jack.remove();
+				gameOver = true;
 			}
 		}
 
@@ -70,26 +54,30 @@ public abstract class LevelScreen extends BaseScreen {
 			}
 		}
 
-		time -= dt;
-		timeLabel.setText("Time: " + (int) time);
-
 		for (BaseActor health : BaseActor.getList(mainStage, Health.class.getName())) {
 			if (jack.overlaps(health)) {
-				if (jack.life < 150) {
+				if(jack.life < 150) {
 					jack.life += 25;
 					lifeLabel.setText("Life: " + (int) jack.life);
 					health.remove();
-				}
+				}	
 
 			}
 		}
-
-		if (time <= 0) {
-			messageLabel.setText("Time Up - Game Over");
-			messageLabel.setColor(Color.RED);
-			messageLabel.setVisible(true);
-			jack.remove();
-			gameOver = true;
+		
+		for (BaseActor voidFall : BaseActor.getList(mainStage, VoidFall.class.getName())) {
+			if (jack.overlaps(voidFall)) {
+				messageLabel.setText("GAME OVER!\nPress C to continue");
+				messageLabel.setColor(Color.RED);
+				
+				messageLabel.setVisible(true);
+				jack.life = 0;
+				jack.remove();
+				resetCharacterAnimation();
+				lifeBarStatus();
+				death = true;
+				gameOver = true;
+			}
 		}
 
 		for (BaseActor springboard : BaseActor.getList(mainStage, Springboard.class.getName())) {
@@ -258,33 +246,6 @@ public abstract class LevelScreen extends BaseScreen {
 
 		// CONTROL JACK LIFE
 		controlLife();
-
-	}
-
-	public boolean keyDown(int keyCode) {
-		if (Gdx.input.isKeyPressed(Keys.ESCAPE))
-			Gdx.app.exit();
-		if (gameOver)
-			return false;
-		if (keyCode == Keys.SPACE) {
-			// if down arrow is held while jump is pressed and koala is above a platform,
-			// then the koala can fall down through it.
-			if (Gdx.input.isKeyPressed(Keys.DOWN)) {
-				for (BaseActor actor : BaseActor.getList(mainStage, Platform.class.getName())) {
-					Platform platform = (Platform) actor;
-					if (jack.belowOverlaps(platform)) {
-						platform.setEnabled(false);
-					}
-				}
-			} else if (jack.isOnSolid()) {
-				jack.jump();
-			}
-		}
-		if (keyCode == Keys.SHIFT_LEFT) {
-			jack.shoot();
-
-		}
-		return false;
 	}
 
 	public void enemyAttack() {
@@ -369,12 +330,13 @@ public abstract class LevelScreen extends BaseScreen {
 				@Override
 				public void run() {
 
-					messageLabel.setText("Game Over");
+					messageLabel.setText("Game Over\nPress C to continue");
 					messageLabel.setColor(Color.RED);
 					messageLabel.setVisible(true);
 					jack.remove();
 					jack.setPosition(-1000, -1000);
 
+					death = true;
 					gameOver = true;
 				}
 			}, 3.0f);
@@ -417,6 +379,34 @@ public abstract class LevelScreen extends BaseScreen {
 			zombie.setAnimationPaused(true);
 
 		}
+	}
+
+	public boolean keyDown(int keyCode) {
+		/*
+		 * if (Gdx.input.isKeyPressed(Keys.ESCAPE))
+		 * Gdx.app.exit();
+		 */
+		if (gameOver)
+			return false;
+		if (keyCode == Keys.SPACE) {
+			// if down arrow is held while jump is pressed and koala is above a platform,
+			// then the koala can fall down through it.
+			if (Gdx.input.isKeyPressed(Keys.DOWN)) {
+				for (BaseActor actor : BaseActor.getList(mainStage, Platform.class.getName())) {
+					Platform platform = (Platform) actor;
+					if (jack.belowOverlaps(platform)) {
+						platform.setEnabled(false);
+					}
+				}
+			} else if (jack.isOnSolid()) {
+				jack.jump();
+			}
+		}
+		if (keyCode == Keys.SHIFT_LEFT) {
+			jack.shoot();
+
+		}
+		return false;
 	}
 
 }

@@ -53,7 +53,7 @@ public abstract class BaseGame extends Game {
 				new FreeTypeFontGenerator(Gdx.files.internal("crackman.ttf"));
 
 		FreeTypeFontParameter fontParameters = new FreeTypeFontParameter();
-		fontParameters.size = 50;
+		fontParameters.size = 35;
 		fontParameters.color = Color.WHITE;
 		fontParameters.borderWidth = 2;
 		fontParameters.borderColor = Color.BLACK;
