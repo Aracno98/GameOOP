@@ -50,11 +50,11 @@ public class Level2 extends LevelScreen {
 			new Coin((float) props.get("x"), (float) props.get("y"), mainStage);
 		}
 
-		for (MapObject obj : tma.getTileList("Timer")) {
+		for (MapObject obj : tma.getTileList("Health")) {
 			MapProperties props = obj.getProperties();
 			new Health((float) props.get("x"), (float) props.get("y"), mainStage);
 		}
-
+		
 		for (MapObject obj : tma.getTileList("Springboard")) {
 			MapProperties props = obj.getProperties();
 			new Springboard((float) props.get("x"), (float) props.get("y"), mainStage);
@@ -93,11 +93,6 @@ public class Level2 extends LevelScreen {
 				lock.setColor(Color.WHITE);
 		}
 
-		for (MapObject obj : tma.getRectangleList("Wizard")) {
-			MapProperties props = obj.getProperties();
-			new Wizard((float) props.get("x"), (float) props.get("y"), mainStage);
-		}
-
 		for (MapObject obj : tma.getRectangleList("Zombie")) {
 			MapProperties zomProps = obj.getProperties();
 			new Zombie((float) zomProps.get("x"), (float) zomProps.get("y"), mainStage);
@@ -113,14 +108,12 @@ public class Level2 extends LevelScreen {
 		jack.toFront();
 
 		gameOver = false;
+		death = false;
 		coins = 0;
-		time = 150;
 
 		coinLabel = new Label("  " + coins, BaseGame.labelStyle);
 		coinLabel.setColor(Color.GOLD);
 		keyTable = new Table();
-		timeLabel = new Label("Time: " + (int) time, BaseGame.labelStyle);
-		timeLabel.setColor(Color.LIGHT_GRAY);
 		messageLabel = new Label("Message", BaseGame.labelStyle);
 		messageLabel.setVisible(false);
 		lifeLabel = new Label("Life: " + (int) jack.life, BaseGame.labelStyle);
@@ -134,7 +127,6 @@ public class Level2 extends LevelScreen {
 		uiTable.add(coin_bar);
 		uiTable.add(coinLabel);
 		uiTable.add(keyTable).expandX();
-		uiTable.add(timeLabel);
 		for (int i = 0; i < jack.life / 25; i++) {
 			LifeBar l = new LifeBar(0, 0, mainStage);
 			lifeList.add(l);
@@ -152,7 +144,7 @@ public class Level2 extends LevelScreen {
 		instrumental.setVolume(audioVolume);
 		instrumental.play();
 
-		//count = 0;
+		count = 0;
 		tot_life = jack.life;
 	}
 
@@ -164,7 +156,16 @@ public class Level2 extends LevelScreen {
 	public boolean keyDown(int keyCode) {
 		super.keyDown(keyCode);
 
-		if (gameOver) {
+		if (gameOver && !death) {
+			if (keyCode == Keys.C) {
+				this.instrumental.dispose();
+				JumpingJackGame.setActiveScreen(new Level3());
+			}
+
+			return false;
+		}
+		
+		if (gameOver && death) {
 			if (keyCode == Keys.C) {
 				this.instrumental.dispose();
 				JumpingJackGame.setActiveScreen(new MenuScreen());

@@ -14,8 +14,7 @@ import com.badlogic.gdx.audio.Music;
 public class Level1 extends LevelScreen {
 	private float audioVolume;
 	private Music instrumental;
-	
-	
+
 	public void initialize() {
 		TilemapActor tma = new TilemapActor("Levels/map01R.tmx", mainStage);
 
@@ -94,11 +93,6 @@ public class Level1 extends LevelScreen {
 				lock.setColor(Color.WHITE);
 		}
 
-		/*for (MapObject obj : tma.getRectangleList("Wizard")) {
-			MapProperties props = obj.getProperties();
-			new Wizard((float) props.get("x"), (float) props.get("y"), mainStage);
-		}*/
-
 		for (MapObject obj : tma.getRectangleList("Zombie")) {
 			MapProperties zomProps = obj.getProperties();
 			new Zombie((float) zomProps.get("x"), (float) zomProps.get("y"), mainStage);
@@ -114,14 +108,12 @@ public class Level1 extends LevelScreen {
 		jack.toFront();
 
 		gameOver = false;
+		death = false;
 		coins = 0;
-		time = 150;
 
 		coinLabel = new Label("  " + coins, BaseGame.labelStyle);
 		coinLabel.setColor(Color.GOLD);
 		keyTable = new Table();
-		timeLabel = new Label("Time: " + (int) time, BaseGame.labelStyle);
-		timeLabel.setColor(Color.LIGHT_GRAY);
 		messageLabel = new Label("Message", BaseGame.labelStyle);
 		messageLabel.setVisible(false);
 		lifeLabel = new Label("Life: " + (int) jack.life, BaseGame.labelStyle);
@@ -131,11 +123,10 @@ public class Level1 extends LevelScreen {
 
 		lifeList = new ArrayList<LifeBar>();
 
-		uiTable.pad(20);
+		uiTable.pad(10);
 		uiTable.add(coin_bar);
 		uiTable.add(coinLabel);
 		uiTable.add(keyTable).expandX();
-		uiTable.add(timeLabel);
 		for (int i = 0; i < jack.life / 25; i++) {
 			LifeBar l = new LifeBar(0, 0, mainStage);
 			lifeList.add(l);
@@ -161,35 +152,26 @@ public class Level1 extends LevelScreen {
 	public void update(float dt) {
 		super.update(dt);
 
-		for (BaseActor voidFall : BaseActor.getList(mainStage, VoidFall.class.getName())) {
-			if (jack.overlaps(voidFall)) {
-				messageLabel.setText("GAME OVER!");
-				messageLabel.setColor(Color.RED);
-				// messageLabel.setPosition(Gdx.graphics.getWidth()/2,
-				// Gdx.graphics.getHeight()/2);
-				
-				messageLabel.setVisible(true);
-				jack.life = 0;
-				jack.remove();
-				resetCharacterAnimation();
-				lifeBarStatus();
-				gameOver = true;
-			}
-		}
-
 		lifeBarStatus();
-
 	}
-
 
 
 	public boolean keyDown(int keyCode) {
 		super.keyDown(keyCode);
 
-		if (gameOver) {
+		if (gameOver && !death) {
 			if (keyCode == Keys.C) {
 				this.instrumental.dispose();
 				JumpingJackGame.setActiveScreen(new Level2());
+			}
+
+			return false;
+		}
+
+		if (gameOver && death) {
+			if (keyCode == Keys.C) {
+				this.instrumental.dispose();
+				JumpingJackGame.setActiveScreen(new MenuScreen());
 			}
 
 			return false;
