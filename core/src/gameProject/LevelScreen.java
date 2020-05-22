@@ -73,12 +73,12 @@ public abstract class LevelScreen extends BaseScreen {
 
 			}
 		}
-		
+
 		for (BaseActor voidFall : BaseActor.getList(mainStage, VoidFall.class.getName())) {
 			if (jack.overlaps(voidFall)) {
 				messageLabel.setText("GAME OVER!\nPress C to continue");
 				messageLabel.setColor(Color.RED);
-				
+
 				messageLabel.setVisible(true);
 				jack.life = 0;
 				jack.remove();
