@@ -18,11 +18,11 @@ public class Enemy extends BaseActor {
 		stand = loadAnimationFromSheet("Enemies/Idle/Idle - Sprite Sheet.png", 2, 6, 0.07f, true);
 		setBoundaryPolygon(8);
 
-		attack = loadAnimationFromSheet("Enemies/Shoot/Shoot - Sprite Sheet.png", 2, 8, 0.065f, true);
+		attack = loadAnimationFromSheet("Enemies/Shoot/Shoot - Sprite Sheet.png", 2, 8, 0.07f, true);
 
 		setScaleX(1);
 
-		life = 100;
+		life = 75;
 		fire_time = 0;
 		hasAttacked = false;
 	}
@@ -40,7 +40,7 @@ public class Enemy extends BaseActor {
 			return;
 		setAnimation(attack);
 		if (fire_time <= 0) {
-			fire_time = 1.1f;
+			fire_time = 1.3f;
 			Laser2 laser = new Laser2(0, 0, this.getStage());
 			laser.centerAtActor(this);
 			laser.setScaleX(this.getScaleX());

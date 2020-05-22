@@ -16,8 +16,8 @@ public class Laser2 extends BaseActor {
 		addAction(first);
 		addAction(Actions.after(Actions.fadeOut(0.5f)));
 		addAction(Actions.after(Actions.removeActor()));
-		setSpeed(250);
-		setMaxSpeed(350);
+		setSpeed(200);
+		setMaxSpeed(250);
 		setDeceleration(0);
 	}
 

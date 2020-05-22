@@ -43,9 +43,9 @@ public class Robot extends BaseActor {
 				"robot/Run (5).png", "robot/Run (6).png", "robot/Run (7).png", "robot/Run (8).png" };
 		walk = loadAnimationFromFiles(walkFileNames, 0.2f, true);
 
-		maxHorizontalSpeed = 300;
-		walkAcceleration = 400;
-		walkDeceleration = 1000;
+		maxHorizontalSpeed = 280;
+		walkAcceleration = 350;
+		walkDeceleration = 1150;
 		gravity = 700;
 		maxVerticalSpeed = 1000;
 

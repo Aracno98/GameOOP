@@ -16,7 +16,7 @@ public class Level1 extends LevelScreen {
 	private Music instrumental;
 
 	public void initialize() {
-		TilemapActor tma = new TilemapActor("Levels/map01R.tmx", mainStage);
+		TilemapActor tma = new TilemapActor("Levels/map03R.tmx", mainStage);
 
 		for (MapObject obj : tma.getRectangleList("Solid")) {
 			MapProperties props = obj.getProperties();
@@ -40,9 +40,10 @@ public class Level1 extends LevelScreen {
 		MapProperties startProps = startPoint.getProperties();
 		jack = new Robot((float) startProps.get("x"), (float) startProps.get("y"), mainStage);
 
-		for (MapObject obj : tma.getTileList("Flag")) {
+		for (MapObject obj : tma.getRectangleList("Door")) {
 			MapProperties props = obj.getProperties();
-			new Flag((float) props.get("x"), (float) props.get("y"), mainStage);
+			new Door((float) props.get("x"), (float) props.get("y"), (float) props.get("width"),
+					(float) props.get("height"), mainStage);
 		}
 
 		for (MapObject obj : tma.getTileList("Coin")) {

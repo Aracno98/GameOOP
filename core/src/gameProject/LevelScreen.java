@@ -45,6 +45,15 @@ public abstract class LevelScreen extends BaseScreen {
 				gameOver = true;
 			}
 		}
+		for (BaseActor door : BaseActor.getList(mainStage, Door.class.getName())) {
+			if (jack.overlaps(door)) {
+				messageLabel.setText("You Win!\nPress C to continue");
+				messageLabel.setColor(Color.LIME);
+				messageLabel.setVisible(true);
+				jack.remove();
+				gameOver = true;
+			}
+		}
 
 		for (BaseActor coin : BaseActor.getList(mainStage, Coin.class.getName())) {
 			if (jack.overlaps(coin)) {
@@ -253,7 +262,7 @@ public abstract class LevelScreen extends BaseScreen {
 			return;
 		float diffx = enemy.getX() - jack.getX();
 		float diffy = enemy.getY() - jack.getY();
-		if (Math.abs(diffx) < 600 && Math.abs(diffy) < 10) {
+		if (Math.abs(diffx) < 420 && Math.abs(diffy) < 10) {
 			if ((diffx > 0 && enemy.getScaleX() == -1) || (diffx < 0 && enemy.getScaleX() == 1)) {
 				if (enemy.getScaleX() == -1 && enemy.hasAttacked == false) {
 					enemy.moveBy(-30, 0);
