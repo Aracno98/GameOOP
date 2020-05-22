@@ -17,7 +17,7 @@ public class Level3 extends LevelScreen {
 	
 	
 	public void initialize() {
-		TilemapActor tma = new TilemapActor("Levels/map03R.tmx", mainStage);
+		TilemapActor tma = new TilemapActor("Levels/map01R.tmx", mainStage);
 
 		for (MapObject obj : tma.getRectangleList("Solid")) {
 			MapProperties props = obj.getProperties();
