@@ -139,7 +139,7 @@ public class Level1 extends LevelScreen {
 
 		keyList = new ArrayList<Color>();
 
-		instrumental = Gdx.audio.newMusic(Gdx.files.internal("Musics/SMB.mp3"));
+		instrumental = Gdx.audio.newMusic(Gdx.files.internal("Musics/lab2.mp3"));
 		audioVolume = 1.00f;
 
 		instrumental.setLooping(true);
