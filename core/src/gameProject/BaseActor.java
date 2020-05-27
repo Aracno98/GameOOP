@@ -26,11 +26,8 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.scenes.scene2d.Group;
 
 /**
- * Extends functionality of the LibGDX Actor class. Add support for
- * textures/animation, collision polygons, movement, world boundaries and camera
- * scrolling.
- * 
- * @author Alex Reami
+ * Extends functionality of the LibGDX Actor class. Add support for textures/animation, 
+ * collision polygons, movement, world boundaries and camera scrolling.
  */
 public class BaseActor extends Group {
 	private Animation<TextureRegion> animation;

@@ -9,7 +9,6 @@ public class Zombie extends BaseActor {
 	private Animation<TextureRegion> walk;
 	private Animation<TextureRegion> attack;
 
-
 	protected boolean move;
 	protected float speed;
 	private int direction;
@@ -26,7 +25,7 @@ public class Zombie extends BaseActor {
 		setBoundaryPolygon(8);
 		String[] attackFileNames = { "zombie/Attack (1).png", "zombie/Attack (2).png", "zombie/Attack (3).png",
 				"zombie/Attack (4).png", "zombie/Attack (5).png", "zombie/Attack (6).png", "zombie/Attack (7).png",
-				"zombie/Attack (8).png" };
+		"zombie/Attack (8).png" };
 		attack = loadAnimationFromFiles(attackFileNames, 0.095f, true);
 
 		speed = 3f;

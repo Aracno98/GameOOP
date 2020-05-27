@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 public class Health extends BaseActor {
 	public Health(float x, float y, Stage s) {
 		super(x,y,s);
-		
+
 		String[] lifeFileNames = { "JumpingJack/items/health/frame-1.png", "JumpingJack/items/health/frame-2.png","JumpingJack/items/health/frame-3.png",
 				"JumpingJack/items/health/frame-4.png","JumpingJack/items/health/frame-5.png","JumpingJack/items/health/frame-6.png",
 				"JumpingJack/items/health/frame-7.png","JumpingJack/items/health/frame-8.png"};

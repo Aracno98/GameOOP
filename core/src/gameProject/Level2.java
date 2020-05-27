@@ -35,7 +35,7 @@ public class Level2 extends LevelScreen {
 			new BlockMove((float) props.get("x"), (float) props.get("y"), (float) props.get("width"),
 					(float) props.get("height"), mainStage);
 		}
-	
+
 		MapObject startPoint = tma.getRectangleList("start").get(0);
 		MapProperties startProps = startPoint.getProperties();
 		jack = new Robot((float) startProps.get("x"), (float) startProps.get("y"), mainStage);
@@ -54,7 +54,7 @@ public class Level2 extends LevelScreen {
 			MapProperties props = obj.getProperties();
 			new Health((float) props.get("x"), (float) props.get("y"), mainStage);
 		}
-		
+
 		for (MapObject obj : tma.getTileList("Springboard")) {
 			MapProperties props = obj.getProperties();
 			new Springboard((float) props.get("x"), (float) props.get("y"), mainStage);
@@ -164,7 +164,7 @@ public class Level2 extends LevelScreen {
 
 			return false;
 		}
-		
+
 		if (gameOver && death) {
 			if (keyCode == Keys.C) {
 				this.instrumental.dispose();

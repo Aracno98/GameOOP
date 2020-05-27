@@ -52,7 +52,7 @@ public class Robot extends BaseActor {
 		setBoundaryPolygon(15);
 
 		String[] fireFileNames = { "robot/Shoot (1).png", "robot/Shoot (2).png", "robot/Shoot (3).png",
-				"robot/Shoot (4).png" };
+		"robot/Shoot (4).png" };
 
 		fire = loadAnimationFromFiles(fireFileNames, 0.5f, true);
 

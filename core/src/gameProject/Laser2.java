@@ -1,7 +1,6 @@
 package gameProject;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
@@ -32,5 +31,5 @@ public class Laser2 extends BaseActor {
 	public boolean getHit() {
 		return hit;
 	}
-	
+
 }

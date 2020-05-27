@@ -14,8 +14,7 @@ import com.badlogic.gdx.audio.Music;
 public class Level3 extends LevelScreen {
 	private float audioVolume;
 	private Music instrumental;
-	
-	
+
 	public void initialize() {
 		TilemapActor tma = new TilemapActor("Levels/map01R.tmx", mainStage);
 
@@ -166,7 +165,7 @@ public class Level3 extends LevelScreen {
 
 			return false;
 		}
-		
+
 		if (gameOver && death) {
 			if (keyCode == Keys.C) {
 				this.instrumental.dispose();
