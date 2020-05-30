@@ -11,6 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.audio.Music;
 
+/**
+ * 	The first level of the game.
+ */
 public class Level1 extends LevelScreen {
 	private float audioVolume;
 	private Music instrumental;
@@ -155,7 +158,6 @@ public class Level1 extends LevelScreen {
 
 		lifeBarStatus();
 	}
-
 
 	public boolean keyDown(int keyCode) {
 		super.keyDown(keyCode);

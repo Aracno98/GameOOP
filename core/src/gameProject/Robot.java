@@ -8,6 +8,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
+/**
+ * 	Class that represent the character used by the player. Robot can perform a series of actions
+ * 	like running, jumping and shooting.
+ */
 public class Robot extends BaseActor {
 	private Animation<TextureRegion> stand;
 	private Animation<TextureRegion> walk;
@@ -75,7 +79,7 @@ public class Robot extends BaseActor {
 				"robot/run_shoot/RunShoot (7).png", "robot/run_shoot/RunShoot (8).png" };
 		run_shoot = loadAnimationFromFiles(runshootFileNames, 0.25f, true);
 
-		// set up the below sensor
+		// set up the below sensor (used for jumping)
 		belowSensor = new BaseActor(0, 0, s);
 		belowSensor.loadTexture("JumpingJack/white.png");
 		belowSensor.setSize(this.getWidth() - 8, 8);
@@ -92,7 +96,6 @@ public class Robot extends BaseActor {
 		super.act(dt);
 
 		// get keyboard input
-
 		if (Gdx.input.isKeyPressed(Keys.LEFT) && d == false)
 			accelerationVec.add(-walkAcceleration, 0);
 
@@ -121,6 +124,7 @@ public class Robot extends BaseActor {
 
 		}
 
+		// fire
 		if (fire_animtime > 0)
 			fire_animtime = fire_animtime - dt;
 		else

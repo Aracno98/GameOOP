@@ -4,6 +4,9 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
+/**
+ * 
+ */
 public class Zombie extends BaseActor {
 
 	private Animation<TextureRegion> walk;
@@ -32,7 +35,6 @@ public class Zombie extends BaseActor {
 		direction = 1;
 		move = true;
 		life = 50;
-
 	}
 
 	public void act(float dt) {
@@ -41,7 +43,6 @@ public class Zombie extends BaseActor {
 		if (move) {
 			moveBy(speed, 0);
 		}
-
 	}
 
 	public void attack() {

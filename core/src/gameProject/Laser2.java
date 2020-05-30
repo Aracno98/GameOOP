@@ -4,6 +4,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
+/**
+ * 	Class that represents enemies attack.
+ */
 public class Laser2 extends BaseActor {
 	protected Action first;
 	private boolean hit;

@@ -12,20 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent.Type;
  */
 public class MenuScreen extends BaseScreen {
 	public void initialize() {
-		BaseActor ocean = new BaseActor(0,0, mainStage);
-		ocean.loadTexture( "JumpingJack/Background3.jpg" );
-		ocean.setSize(1200,900);
-
-		/*ButtonStyle buttonStyle = new ButtonStyle();
-
-		Texture buttonTex = new Texture(Gdx.files.internal("Gui/Button/start.png"));
-		TextureRegion buttonRegion = new TextureRegion(buttonTex);
-		buttonStyle.up = new TextureRegionDrawable(buttonRegion);
-
-		Button startButton = new Button (buttonStyle);
-		startButton.setPosition(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
-		 */
-		//uiStage.addActor(startButton);
+		BaseActor back = new BaseActor(0,0, mainStage);
+		back.loadTexture( "JumpingJack/Background3.jpg" );
+		back.setSize(1200,900);
 
 		TextButton startButton = new TextButton( "Start", BaseGame.textButtonStyle );
 		startButton.addListener(
@@ -59,7 +48,7 @@ public class MenuScreen extends BaseScreen {
 
 	public boolean keyDown(int keyCode) {
 		if (Gdx.input.isKeyPressed(Keys.ENTER))
-			JumpingJackGame.setActiveScreen( new Level2() );
+			JumpingJackGame.setActiveScreen( new Level1() );
 		if (Gdx.input.isKeyPressed(Keys.ESCAPE))
 			Gdx.app.exit();
 		return false;

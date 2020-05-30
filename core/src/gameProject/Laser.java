@@ -4,6 +4,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
+/**
+ * 	Player character attack. Used to reduce enemy's life.
+ */
 public class Laser extends BaseActor {
 	protected Action first;
 	private boolean hit;

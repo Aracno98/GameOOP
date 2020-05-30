@@ -12,6 +12,9 @@ import com.badlogic.gdx.utils.Timer.Task;
 import java.util.ArrayList;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
+/**
+ * 	Class used to handle the levels of the game.
+ */
 public abstract class LevelScreen extends BaseScreen {
 	Robot jack;
 	Enemy enemy;
@@ -45,6 +48,7 @@ public abstract class LevelScreen extends BaseScreen {
 				gameOver = true;
 			}
 		}
+
 		for (BaseActor door : BaseActor.getList(mainStage, Door.class.getName())) {
 			if (jack.overlaps(door)) {
 				messageLabel.setText("You Win!\nPress C to continue");
@@ -70,7 +74,6 @@ public abstract class LevelScreen extends BaseScreen {
 					lifeLabel.setText("Life: " + (int) jack.life);
 					health.remove();
 				}	
-
 			}
 		}
 
@@ -195,6 +198,7 @@ public abstract class LevelScreen extends BaseScreen {
 					}
 				}
 			}
+
 			for (BaseActor actor : BaseActor.getList(mainStage, Zombie.class.getName())) {
 
 				if (laserActor.overlaps(actor)) {
@@ -284,7 +288,6 @@ public abstract class LevelScreen extends BaseScreen {
 			}
 			enemy.stand();
 		}
-
 	}
 
 	public void zombieAttack() {
@@ -299,7 +302,6 @@ public abstract class LevelScreen extends BaseScreen {
 				zombie.walk();
 		} else
 			zombie.walk();
-
 	}
 
 	public void contactDamage(BaseActor other) {
@@ -317,7 +319,6 @@ public abstract class LevelScreen extends BaseScreen {
 				}
 			}
 		}
-
 	}
 
 	public void fireDamageJack() {
@@ -386,20 +387,14 @@ public abstract class LevelScreen extends BaseScreen {
 			zombie = (Zombie) actor;
 			zombie.speed = 0;
 			zombie.setAnimationPaused(true);
-
 		}
 	}
 
 	public boolean keyDown(int keyCode) {
-		/*
-		 * if (Gdx.input.isKeyPressed(Keys.ESCAPE))
-		 * Gdx.app.exit();
-		 */
 		if (gameOver)
 			return false;
+
 		if (keyCode == Keys.SPACE) {
-			// if down arrow is held while jump is pressed and koala is above a platform,
-			// then the koala can fall down through it.
 			if (Gdx.input.isKeyPressed(Keys.DOWN)) {
 				for (BaseActor actor : BaseActor.getList(mainStage, Platform.class.getName())) {
 					Platform platform = (Platform) actor;
@@ -411,10 +406,11 @@ public abstract class LevelScreen extends BaseScreen {
 				jack.jump();
 			}
 		}
+
 		if (keyCode == Keys.SHIFT_LEFT) {
 			jack.shoot();
-
 		}
+
 		return false;
 	}
 

@@ -11,6 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.audio.Music;
 
+/**
+ * 	The second level of the game.
+ */
 public class Level2 extends LevelScreen {
 	private float audioVolume;
 	private Music instrumental;

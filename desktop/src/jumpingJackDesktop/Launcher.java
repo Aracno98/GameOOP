@@ -1,4 +1,4 @@
-package ex90_KoalaJackDesktop;
+package jumpingJackDesktop;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;

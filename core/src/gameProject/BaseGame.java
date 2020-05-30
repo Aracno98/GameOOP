@@ -21,10 +21,6 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFont
  *  manages the screens that appear during the game.
  */
 public abstract class BaseGame extends Game {
-
-	/**
-	 *  Stores reference to game; used when calling setActiveScreen method.
-	 */
 	private static BaseGame game;
 
 	public static LabelStyle labelStyle; 
@@ -46,7 +42,6 @@ public abstract class BaseGame extends Game {
 		InputMultiplexer im = new InputMultiplexer();
 		Gdx.input.setInputProcessor( im );
 
-
 		labelStyle = new LabelStyle();
 		//labelStyle.font = new BitmapFont( Gdx.files.internal("JumpingJack/cooper.fnt") );
 		FreeTypeFontGenerator fontGenerator =
@@ -66,9 +61,9 @@ public abstract class BaseGame extends Game {
 
 		textButtonStyle = new TextButtonStyle();
 
-		Texture   buttonTex   = new Texture( Gdx.files.internal("JumpingJack/Button_05.png") );
+		Texture buttonTex = new Texture( Gdx.files.internal("JumpingJack/Button_05.png") );
 		NinePatch buttonPatch = new NinePatch(buttonTex, 24,24,24,24);
-		textButtonStyle.up    = new NinePatchDrawable( buttonPatch );
+		textButtonStyle.up = new NinePatchDrawable( buttonPatch );
 		textButtonStyle.font = customFont;
 		textButtonStyle.fontColor = Color.BLACK;
 	}

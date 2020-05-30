@@ -26,7 +26,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.scenes.scene2d.Group;
 
 /**
- * Extends functionality of the LibGDX Actor class. Add support for textures/animation, 
+ * Extends functionality of the LibGDX Actor/Group class. Add support for textures/animation, 
  * collision polygons, movement, world boundaries and camera scrolling.
  */
 public class BaseActor extends Group {
@@ -44,6 +44,9 @@ public class BaseActor extends Group {
 
 	private static Rectangle worldBounds; // stores size of game world
 
+	/**
+	 * Sets initial position of actor and adds to stage
+	 */
 	public BaseActor(float x, float y, Stage s) {
 		super();
 
@@ -85,9 +88,6 @@ public class BaseActor extends Group {
 
 	/**
 	 * Align center of actor at given position coordinates.
-	 * 
-	 * @param x x-coordinate to center at
-	 * @param y y-coordinate to center at
 	 */
 	public void centerAtPosition(float x, float y) {
 		setPosition(x - getWidth() / 2, y - getHeight() / 2);
@@ -153,8 +153,7 @@ public class BaseActor extends Group {
 	}
 
 	/**
-	 * Creates an animation from a spritesheet: a rectangular grid of images stored
-	 * in a single file.
+	 * Creates an animation from a spritesheet (rectangular grid of images stored in a single file).
 	 * 
 	 * @param fileName      name of file containing spritesheet
 	 * @param rows          number of rows of images in spritesheet
@@ -163,8 +162,8 @@ public class BaseActor extends Group {
 	 * @param loop          should the animation loop
 	 * @return animation created (useful for storing multiple animations)
 	 */
-	public Animation<TextureRegion> loadAnimationFromSheet(String fileName, int rows, int cols, float frameDuration,
-			boolean loop) {
+	public Animation<TextureRegion> loadAnimationFromSheet(String fileName, int rows, int cols, 
+			float frameDuration, boolean loop) {
 		Texture texture = new Texture(Gdx.files.internal(fileName), true);
 		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		int frameWidth = texture.getWidth() / cols;
@@ -192,7 +191,7 @@ public class BaseActor extends Group {
 	}
 
 	/**
-	 * Convenience method for creating a 1-frame animation from a single texture.
+	 * Method for creating a 1-frame animation from a single texture.
 	 * 
 	 * @param fileName name of image file
 	 * @return animation created
@@ -215,8 +214,6 @@ public class BaseActor extends Group {
 	/**
 	 * Checks if animation is complete: if play mode is normal (not looping) and
 	 * elapsed time is greater than time corresponding to last frame.
-	 * 
-	 * @return
 	 */
 	public boolean isAnimationFinished() {
 		return animation.isAnimationFinished(elapsedTime);
@@ -266,7 +263,6 @@ public class BaseActor extends Group {
 	 * @param speed of movement (pixels/second)
 	 */
 	public void setSpeed(float speed) {
-		// if length is zero, then assume motion angle is zero degrees
 		if (velocityVec.len() == 0)
 			velocityVec.set(speed, 0);
 		else
@@ -408,8 +404,7 @@ public class BaseActor extends Group {
 	}
 
 	/**
-	 * Determine if this BaseActor overlaps other BaseActor (according to collision
-	 * polygons).
+	 * Determine if this BaseActor overlaps other BaseActor (according to collision polygons).
 	 * 
 	 * @param other BaseActor to check for overlap
 	 * @return true if collision polygons of this and other BaseActor overlap
@@ -426,9 +421,8 @@ public class BaseActor extends Group {
 	}
 
 	/**
-	 * Implement a "solid"-like behavior: when there is overlap, move this BaseActor
-	 * away from other BaseActor along minimum translation vector until there is no
-	 * overlap.
+	 * When there is overlap, move this BaseActor away from other BaseActor along minimum
+	 * translation vector until there is no overlap.
 	 * 
 	 * @param other BaseActor to check for overlap
 	 * @return direction vector by which actor was translated, null if no overlap
@@ -455,11 +449,9 @@ public class BaseActor extends Group {
 	 * Determine if this BaseActor is near other BaseActor (according to collision
 	 * polygons).
 	 * 
-	 * @param distance amount (pixels) by which to enlarge collision polygon width
-	 *                 and height
+	 * @param distance amount (pixels) by which to enlarge collision polygon width and height
 	 * @param other    BaseActor to check if nearby
-	 * @return true if collision polygons of this (enlarged) and other BaseActor
-	 *         overlap
+	 * @return true if collision polygons of this (enlarged) and other BaseActor overlap
 	 */
 	public boolean isWithinDistance(float distance, BaseActor other) {
 		Polygon poly1 = this.getBoundaryPolygon();
@@ -489,8 +481,7 @@ public class BaseActor extends Group {
 	/**
 	 * Set world dimensions for use by methods boundToWorld() and scrollTo().
 	 * 
-	 * @param BaseActor whose size determines the world bounds (typically a
-	 *                  background image)
+	 * @param BaseActor whose size determines the world bounds (typically a background image)
 	 */
 	public static void setWorldBounds(BaseActor ba) {
 		setWorldBounds(ba.getWidth(), ba.getHeight());
@@ -580,8 +571,7 @@ public class BaseActor extends Group {
 	 * Processes all Actions and related code for this object; automatically called
 	 * by act method in Stage class.
 	 * 
-	 * @param dt elapsed time (second) since last frame (supplied by Stage act
-	 *           method)
+	 * @param dt elapsed time (second) since last frame (supplied by Stage act method)
 	 */
 	public void act(float dt) {
 		super.act(dt);
