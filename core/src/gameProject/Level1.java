@@ -114,8 +114,9 @@ public class Level1 extends LevelScreen {
 		gameOver = false;
 		death = false;
 		coins = 0;
-
-		coinLabel = new Label("  " + coins, BaseGame.labelStyle);
+		min_coins=15;
+		
+		coinLabel = new Label("  " + coins + " min:" + min_coins, BaseGame.labelStyle);
 		coinLabel.setColor(Color.GOLD);
 		keyTable = new Table();
 		messageLabel = new Label("Message", BaseGame.labelStyle);

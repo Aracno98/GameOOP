@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 /**
- * 	Class used to handle the levels of the game.
+ * Class used to handle the levels of the game.
  */
 public abstract class LevelScreen extends BaseScreen {
 	Robot jack;
@@ -25,6 +25,8 @@ public abstract class LevelScreen extends BaseScreen {
 	protected int coins;
 	protected int count;
 	protected float tot_life;
+	protected int min_coins;
+	
 	Label coinLabel;
 	Label messageLabel;
 	Table keyTable;
@@ -41,39 +43,65 @@ public abstract class LevelScreen extends BaseScreen {
 
 		for (BaseActor flag : BaseActor.getList(mainStage, Flag.class.getName())) {
 			if (jack.overlaps(flag)) {
-				messageLabel.setText("You Win!\nPress C to continue");
-				messageLabel.setColor(Color.LIME);
-				messageLabel.setVisible(true);
-				jack.remove();
-				gameOver = true;
+				if (coins >= min_coins) {
+					messageLabel.setText("You Win!\nPress C to continue");
+					messageLabel.setColor(Color.LIME);
+					messageLabel.setVisible(true);
+					jack.remove();
+					gameOver = true;
+				} else {
+					messageLabel.setText("You need other "+ (min_coins-coins) + " COINS");
+					messageLabel.setColor(Color.SKY);
+					messageLabel.setVisible(true);
+					Timer.schedule(new Task() {
+						@Override
+						public void run() {
+							messageLabel.setVisible(false);
+						}
+					}, 1.5f);
+				}
+
 			}
 		}
 
 		for (BaseActor door : BaseActor.getList(mainStage, Door.class.getName())) {
 			if (jack.overlaps(door)) {
-				messageLabel.setText("You Win!\nPress C to continue");
-				messageLabel.setColor(Color.LIME);
-				messageLabel.setVisible(true);
-				jack.remove();
-				gameOver = true;
+				if (coins >= min_coins) {
+					messageLabel.setText("You Win!\nPress C to continue");
+					messageLabel.setColor(Color.LIME);
+					messageLabel.setVisible(true);
+					jack.remove();
+					gameOver = true;
+				} else {
+					messageLabel.setText("You need other "+ (min_coins-coins) + " COINS");
+					messageLabel.setColor(Color.SKY);
+					messageLabel.setVisible(true);
+					Timer.schedule(new Task() {
+						@Override
+						public void run() {
+							messageLabel.setVisible(false);
+						}
+					}, 1.5f);
+				}
+
 			}
 		}
 
 		for (BaseActor coin : BaseActor.getList(mainStage, Coin.class.getName())) {
 			if (jack.overlaps(coin)) {
 				coins++;
-				coinLabel.setText("  " + coins);
+				coinLabel.setText("  " + coins + " min:" + min_coins);
 				coin.remove();
 			}
 		}
 
 		for (BaseActor health : BaseActor.getList(mainStage, Health.class.getName())) {
 			if (jack.overlaps(health)) {
-				if(jack.life < 150) {
+				if (jack.life < 150) {
 					jack.life += 25;
 					lifeLabel.setText("Life: " + (int) jack.life);
 					health.remove();
-				}	
+				}
 			}
 		}
 
@@ -261,7 +289,7 @@ public abstract class LevelScreen extends BaseScreen {
 		controlLife();
 	}
 
-	public void enemyAttack() {
+	private void enemyAttack() {
 		if (jack.isDead())
 			return;
 		float diffx = enemy.getX() - jack.getX();
@@ -290,7 +318,7 @@ public abstract class LevelScreen extends BaseScreen {
 		}
 	}
 
-	public void zombieAttack() {
+	private void zombieAttack() {
 		if (jack.isDead())
 			return;
 		float diffx = zombie.getX() - jack.getX();
@@ -304,7 +332,7 @@ public abstract class LevelScreen extends BaseScreen {
 			zombie.walk();
 	}
 
-	public void contactDamage(BaseActor other) {
+	private void contactDamage(BaseActor other) {
 		if (jack.overlaps(other)) {
 			if (jack.life <= 0)
 				controlLife();
@@ -321,7 +349,7 @@ public abstract class LevelScreen extends BaseScreen {
 		}
 	}
 
-	public void fireDamageJack() {
+	private void fireDamageJack() {
 		if (!gameOver)
 			controlLife();
 		if (jack.life > 0) {
@@ -332,7 +360,7 @@ public abstract class LevelScreen extends BaseScreen {
 		}
 	}
 
-	public void controlLife() {
+	private void controlLife() {
 		if (jack.life <= 0) {
 			jack.dead();
 			resetCharacterAnimation();
@@ -377,7 +405,7 @@ public abstract class LevelScreen extends BaseScreen {
 		}
 	}
 
-	public void resetCharacterAnimation() {
+	private void resetCharacterAnimation() {
 		for (BaseActor actor : BaseActor.getList(mainStage, Enemy.class.getName())) {
 			enemy = (Enemy) actor;
 			enemy.stand();
